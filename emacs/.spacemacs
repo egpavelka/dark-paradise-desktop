@@ -10,7 +10,6 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     php
      (auto-completion :variables
                       auto-completion-enable-help-tooltop t
                       auto-completion-enable-snippets-in-popup t
@@ -22,6 +21,7 @@
      dash
      emacs-lisp
      evernote
+     extra-langs
      gigi
      git
      github
@@ -34,13 +34,14 @@
             latex-enable-auto-fill t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
-     (nlinum :variables
-             nlinum-relative-mode nil)
+     ;;(nlinum :variables
+     ;;        nlinum-relative-mode nil)
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
           org-enable-reveal-js-support t)
      pandoc
+     php
      pdf-tools
      python
      (ranger :variables
@@ -54,10 +55,7 @@
      tmux
      twitter
      typography
-     ;;(version-control :variables
-     ;;                 version-control-diff-tool 'git-gutter
-     ;;                 version-control-global-margin t
-     ;;                 version-control-diff-side 'left)
+     yaml
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
@@ -83,11 +81,12 @@
    dotspacemacs-themes '(spacemacs-dark-paradise
                          spacemacs-babywave)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Iosevka"
+   dotspacemacs-default-font '("Fira Code"
                                :size 12
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 0.8)
+
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -115,7 +114,7 @@
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
@@ -124,34 +123,34 @@
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-centered-buff
    ))
 
 (defun dotspacemacs/user-init ()
   (defconst user-layer-dir (file-name-as-directory "~/.emacs.d/private"))
   (defconst user-secrets-dir (file-name-as-directory (concat user-layer-dir "secrets")))
-  (defconst user-cloud-dir (file-name-as-directory "/media/Dropbox"))
   (defconst user-project-dir (getenv "PROJECTS_DIR"))
 
-  (defconst user-org-dir   (file-name-as-directory (concat user-cloud-dir "org")))
+  (defconst user-org-dir   (file-name-as-directory "~/Dropbox/org"))
   (defconst user-notes-dir (file-name-as-directory (concat user-org-dir "notes")))
   (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "journal")))
   (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/Books")))
 
-  (defconst user-bib-file (concat user-notes-dir "library.bib"))
-  (defconst user-bib-notes-file (concat user-project-dir "pile/pile/readings/bib-notes.org"))
-  (defconst user-books-file (concat user-project-dir "pile/pile/readings/books.org"))
-  (defconst user-clippings-file (concat user-org-dir "pile/pile/readings/clippings.org"))
+  ;; (defconst user-bib-file (concat user-notes-dir "library.bib"))
   (defconst user-bookmarks-file (concat user-notes-dir "bookmarks.org"))
   (defconst user-gcal-file (concat user-org-dir "gcal.org"))
 
   (setq exec-path-from-shell-arguments '("-c"))
+  (setq initial-buffer-choice "*spacemacs*")
 
   (setq custom-file "~/.emacs.d/custom.el")
   (load custom-file)
   )
 
 (defun dotspacemacs/user-config ()
-  (setq-default web-mode-markup-indent-offset 2
+  (setq auto-save-file-name-transforms
+        `((".*" "~/.emacs.d/auto-save/" t)))
+  (setq-default  web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2
                 css-indent-offset 2
@@ -159,5 +158,8 @@
                 js-indent-level 2
                 js2-strict-missing-semi-warning nil
                 js2-missing-semi-one-line-override nil
-                typescript-indent-level 2)
+                typescript-indent-level 2
+                centered-buffer-mode t
+                neo-window-fixed-size nil
+                fringe-mode 50)
   )

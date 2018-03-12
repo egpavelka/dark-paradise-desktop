@@ -3,7 +3,7 @@
 #audible_bell = false
 #clickable_url = true
 #dynamic_title = true
-font = Iosevka 10 
+font = Fira Code Regular 11
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
@@ -45,7 +45,7 @@ foreground_bold = #fefef7
 cursor          = #e6958b
 # background      = #091f2c
 # 20% background transparency (requires a compositor)
-background = rgba(9, 31, 44, 0.8)
+background = rgba(9, 31, 44, 0.7)
 highlight = #adbb6d
 
 color0  = #203a3e

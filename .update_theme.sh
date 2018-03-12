@@ -24,7 +24,7 @@ cp $HOME/.spacemacs $DEST/emacs/
 sudo cp /etc/lightdm/lightdm-gtk-greeter.conf $DEST/lightdm/
 
 # ROFI
-cp $HOME/.config/rofi/config $DEST/rofi/
+cp -r $HOME/.config/rofi/* $DEST/rofi/
 
 # Terminal
 cp $HOME/.config/termite/config $DEST/termite/
@@ -33,4 +33,4 @@ cp $HOME/.config/termite/config $DEST/termite/
 cp $HOME/.config/tint2/tint2rc $DEST/tint2/
 
 # Xmonad
-cp -r $HOME/.xmonad $DEST/xmonad/
+cp -r $HOME/.xmonad/xmonad.hs $DEST/xmonad/

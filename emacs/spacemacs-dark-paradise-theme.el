@@ -39,7 +39,7 @@
 
 
         ;; fonts
-        (sans-font    "Source Sans Pro")
+        (sans-font    "Lato")
         (et-font      "EtBembo")
         )
 
@@ -319,7 +319,7 @@
      `(helm-match ((,class (:background ,bg2 :foreground ,head1))))
      `(helm-match-item ((,class (:background ,bg2 :foreground ,head1))))
      `(helm-moccur-buffer ((,class (:foreground ,var :background ,bg1))))
-     `(helm-selection ((,class (:background ,highlight))))
+     `(helm-selection ((,class (:background ,highlight :foreground ,bg1))))
      `(helm-selection-line ((,class (:background ,bg2))))
      `(helm-separator ((,class (:foreground ,comp :background ,bg1))))
      `(helm-source-header ((,class (:background ,bg1 :foreground ,base-dim :inherit bold))))
@@ -328,9 +328,9 @@
      `(helm-visible-mark ((,class (:foreground ,keyword :background ,bg3))))
 
 ;;;;; helm-swoop
-     `(helm-swoop-target-line-block-face ((,class (:foreground ,base :background ,highlight))))
-     `(helm-swoop-target-line-face ((,class (:background ,highlight))))
-     `(helm-swoop-target-word-face ((,class (:background ,highlight :foreground ,mat))))
+     `(helm-swoop-target-line-block-face ((,class (:foreground ,bg1 :background ,highlight))))
+     `(helm-swoop-target-line-face ((,class (:background ,highlight :foreground ,bg1))))
+     `(helm-swoop-target-word-face ((,class (:background ,highlight-dim :foreground ,bg1))))
 
 ;;;;; highlights
      `(hi-green  ((,class (:foreground ,green :background ,green-bg))))

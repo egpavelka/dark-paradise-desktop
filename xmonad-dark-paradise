@@ -1,5 +1,5 @@
 #!/bin/bash
-THEME="/home/gigi/.custom-themes/xmonad-babywave"
+THEME="/home/gigi/.custom-themes/xmonad-dark-paradise"
 
 # different color schemes for atom, emacs, mc, rofi, terminator
 
@@ -7,14 +7,14 @@ THEME="/home/gigi/.custom-themes/xmonad-babywave"
 # sed -i -e 's/enabled-themes (quote (.*)/enabled-themes (quote (pastel_white)/' $HOME/.emacs.d/init.el
 
 # Change gtk and icon themes
-sed -i -e 's/gtk-theme-name=".*"/gtk-theme-name="dark-paradise"/' $HOME/.gtkrc-2.0
-sed -i -e 's/gtk-icon-theme-name=".*"/gtk-icon-theme-name="Pop"/' $HOME/.gtkrc-2.0
-sed -i -e 's/gtk-theme-name=.*/gtk-theme-name=dark-paradise/' $HOME/.config/gtk-3.0/settings.ini
-sed -i -e 's/gtk-icon-theme-name=.*/gtk-icon-theme-name=Pop/' $HOME/.config/gtk-3.0/settings.ini
+# sed -i -e 's/gtk-theme-name=".*"/gtk-theme-name="dark-paradise"/' $HOME/.gtkrc-2.0
+# sed -i -e 's/gtk-icon-theme-name=".*"/gtk-icon-theme-name="Pop"/' $HOME/.gtkrc-2.0
+# sed -i -e 's/gtk-theme-name=.*/gtk-theme-name=dark-paradise/' $HOME/.config/gtk-3.0/settings.ini
+# sed -i -e 's/gtk-icon-theme-name=.*/gtk-icon-theme-name=Pop/' $HOME/.config/gtk-3.0/settings.ini
 
 cp $THEME/rofi/config $HOME/.config/rofi/
 cp $THEME/termite/config $HOME/.config/termite/
-cp $THEME/x/.Xresources $HOME/
+cp $THEME/.Xresources $HOME/
 
  light-locker &
  xmonad &

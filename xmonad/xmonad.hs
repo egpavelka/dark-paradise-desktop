@@ -11,7 +11,9 @@ import XMonad.Hooks.Minimize
 import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Circle
 import XMonad.Layout.Gaps
+import XMonad.Layout.Grid
 import XMonad.Layout.Minimize
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Layout.Spiral
 import XMonad.Layout.ThreeColumns
@@ -26,24 +28,29 @@ import qualified XMonad.StackSet as W
 
 -- LAYOUT & THEME
 
-backgroundColor   = "#FFEFF5"
-middleColor       = "#AEAEAE"
-foregroundColor   = "#0E0E0E"
+backgroundColor   = "#091f2c"
+middleColor       = "#cac46e"
+foregroundColor   = "#e6958b"
 
-myLayout = avoidStruts $ minimize $ spacingWithEdge 10 $
-  emptyBSP ||| Circle ||| Grid ||| ResizableTall 1 (3/100) (1/2) [] ||| Spiral(6/7)
+myLayout = minimize $ spacingWithEdge 10 $
+  emptyBSP ||| Circle
+
+-- myLayout = avoidStruts $ minimize $ spacingWithEdge 10 $
+--   emptyBSP ||| Circle ||| Grid ||| ResizableTall 1 (3/100) (1/2) [] ||| spiral(6/7)
 
 -- STARTUP PROGRAMS
 
 myStartupHook :: X ()
 myStartupHook = do
+  spawnOnce "/usr/lib/notify-osd/notify-osd"
   spawnOnce "light-locker"
-  spawnOnce "feh --bg-fill /home/gigi/.backgrounds/babywave/pinkmonitor.png"
+  spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
   spawnOnce "tint2"
   spawnOnce "nm-applet"
   spawnOnce "pa-applet"
   spawnOnce "redshift-gtk"
   spawnOnce "compton"
+  spawnOnce "setxkbmap -option compose:menu"
 
 -- MAIN CONFIG
 
@@ -55,12 +62,12 @@ main =
 
 myConfig = def
   { borderWidth        = 2
-  , focusedBorderColor = foregroundColor
+  , focusedBorderColor = middleColor
   , focusFollowsMouse  = False
   , handleEventHook    = docksEventHook <+> minimizeEventHook
   , keys               = myKeys
   , layoutHook         = myLayout
-  , manageHook	       = manageDocks
+  , manageHook         = manageDocks
   , modMask            = mod4Mask
   , normalBorderColor  = middleColor
   , startupHook        = myStartupHook
