@@ -18,15 +18,19 @@
                       :disabled-for markdown org)
      better-defaults
      colors
+     csv
      dash
      emacs-lisp
      evernote
      extra-langs
      gigi
-     git
-     github
+     graphviz
+     ;; git
+     ;; github
      haskell
      html
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     ipython-notebook
      ivy
      javascript
      (latex :variables
@@ -41,7 +45,6 @@
           org-enable-github-support t
           org-enable-reveal-js-support t)
      pandoc
-     php
      pdf-tools
      python
      (ranger :variables
@@ -76,13 +79,13 @@
                                 (todos . 5)
                                 (recents . 5)
                                 (projects . 7))
-   dotspacemacs-startup-buffer-responsive t
+   ;; dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-themes '(spacemacs-dark-paradise
                          spacemacs-babywave)
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Code"
-                               :size 12
+   dotspacemacs-colorize-cursor-according-to-state nil
+   dotspacemacs-default-font '("Iosevka"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 0.8)
@@ -136,12 +139,12 @@
   (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "journal")))
   (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/Books")))
 
-  ;; (defconst user-bib-file (concat user-notes-dir "library.bib"))
   (defconst user-bookmarks-file (concat user-notes-dir "bookmarks.org"))
   (defconst user-gcal-file (concat user-org-dir "gcal.org"))
 
-  (setq exec-path-from-shell-arguments '("-c"))
-  (setq initial-buffer-choice "*spacemacs*")
+  (setq exec-path-from-shell-arguments '("-c")
+        org-agenda-window-setup 'current-window
+        org-archive-location "~/Dropbox/org/planning/.task_archive.org")
 
   (setq custom-file "~/.emacs.d/custom.el")
   (load custom-file)
@@ -150,6 +153,7 @@
 (defun dotspacemacs/user-config ()
   (setq auto-save-file-name-transforms
         `((".*" "~/.emacs.d/auto-save/" t)))
+  (setq initial-buffer-choice nil)
   (setq-default  web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2
@@ -159,7 +163,21 @@
                 js2-strict-missing-semi-warning nil
                 js2-missing-semi-one-line-override nil
                 typescript-indent-level 2
-                centered-buffer-mode t
                 neo-window-fixed-size nil
-                fringe-mode 50)
+                line-spacing 2
+                fringe-mode 25)
+
+  (setf slime-lisp-implementations
+        `((sbcl    ("sbcl"))
+          (roswell ("ros" "-Q" "run"))
+          (roswell-dune ("ros" "-Q" "run" "-e" "(ql:quickload :dune)" "-e" "(in-package :dune)")))
+        slime-default-lisp 'roswell-dune)
+
+  (slime-setup '(slime-asdf
+                 slime-company
+                 slime-fancy
+                 slime-indentation
+                 slime-sbcl-exts
+                 slime-scratch
+                 slime-tramp))
   )

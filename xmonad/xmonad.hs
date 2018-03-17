@@ -5,6 +5,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.Navigation2D
 
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.Minimize
 
@@ -22,6 +23,7 @@ import XMonad.Util.CustomKeys
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 import Graphics.X11.ExtraTypes.XF86
 import Data.List
 import qualified XMonad.StackSet as W
@@ -32,7 +34,7 @@ backgroundColor   = "#091f2c"
 middleColor       = "#cac46e"
 foregroundColor   = "#e6958b"
 
-myLayout = minimize $ spacingWithEdge 10 $
+myLayout = minimize $ spacingWithEdge 20 $
   emptyBSP ||| Circle
 
 -- myLayout = avoidStruts $ minimize $ spacingWithEdge 10 $
@@ -49,6 +51,7 @@ myStartupHook = do
   spawnOnce "nm-applet"
   spawnOnce "pa-applet"
   spawnOnce "redshift-gtk"
+  spawnOnce "dropbox"
   spawnOnce "compton"
   spawnOnce "setxkbmap -option compose:menu"
 
@@ -58,6 +61,7 @@ main :: IO ()
 main =
   xmonad
     $ withNavigation2DConfig def { defaultTiledNavigation = hybridNavigation }
+    $ docks $ emwh $ pagerHints
     $ myConfig
 
 myConfig = def
@@ -72,7 +76,7 @@ myConfig = def
   , normalBorderColor  = middleColor
   , startupHook        = myStartupHook
   , terminal           = "termite"
-  , workspaces         = ["browse", "playsette", "personal brand", "spanish", "design", "notes", "other"]
+  , workspaces         = ["browse", "playsette", "personal brand", "spanish", "design", "messages", "notes", "system", "other"]
   }
 
 -- KEYS
@@ -90,8 +94,8 @@ addedKeys conf @ XConfig {modMask = modm} =
   [ -- SERVICES
     ((modm, xK_space) , spawn "rofi -show")
   , ((modm, xK_Return), spawn $ XMonad.terminal conf)
-  , ((0, xK_Print), spawn "maim ~/Photos/$(date +%s).png")
-  , ((shiftMask, xK_Print), spawn "maim -s | xclip -selection clipboard -t image/png")
+  , ((0, xK_Home), spawn "maim ~/Pictures/Screenshots/$(date +%s).png")
+  , ((shiftMask, xK_Home), spawn "maim -s  xclip -selection clipboard -t image/png")
   , ((modm, xK_q), recompile True >> restart "xmonad" True)
   , ((0, xF86XK_AudioRaiseVolume), spawn "/usr/bin/pulseaudio-ctl up")
   , ((0, xF86XK_AudioLowerVolume), spawn "/usr/bin/pulseaudio-ctl down")
@@ -135,8 +139,10 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((modm, xK_3), sequence_ [toggleOrView "personal brand"  , spawn "notify-send \"personal brand\""  ])
   , ((modm, xK_4), sequence_ [toggleOrView "spanish"  , spawn "notify-send \"spanish\""  ])
   , ((modm, xK_5), sequence_ [toggleOrView "design"  , spawn "notify-send \"design\""  ])
-  , ((modm, xK_6), sequence_ [toggleOrView "notes"   , spawn "notify-send \"notes\""   ])
-  , ((modm, xK_7), sequence_ [toggleOrView "other"   , spawn "notify-send \"other\""   ])
+  , ((modm, xK_6), sequence_ [toggleOrView "messages"   , spawn "notify-send \"messages\""   ])
+  , ((modm, xK_7), sequence_ [toggleOrView "notes"   , spawn "notify-send \"notes\""   ])
+  , ((modm, xK_8), sequence_ [toggleOrView "system"   , spawn "notify-send \"system\""   ])
+  , ((modm, xK_9), sequence_ [toggleOrView "other"   , spawn "notify-send \"other\""   ])
 
   -- SESSION
   , ((0, xF86XK_Sleep), spawn "light-locker-command --lock")
