@@ -32,5 +32,8 @@ cp $HOME/.config/termite/config $DEST/termite/
 # Tint2
 cp $HOME/.config/tint2/tint2rc $DEST/tint2/
 
+# Tmux
+cp $HOME/.tmux.conf $DEST/
+
 # Xmonad
 cp -r $HOME/.xmonad/xmonad.hs $DEST/xmonad/

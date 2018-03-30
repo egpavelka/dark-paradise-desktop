@@ -11,6 +11,7 @@ import XMonad.Hooks.Minimize
 
 import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.Circle
+import XMonad.Layout.Cross
 import XMonad.Layout.Gaps
 import XMonad.Layout.Grid
 import XMonad.Layout.Minimize
@@ -23,7 +24,7 @@ import XMonad.Util.CustomKeys
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 
-import System.Taffybar.Hooks.PagerHints (pagerHints)
+-- import System.Taffybar.Hooks.PagerHints (pagerHints)
 import Graphics.X11.ExtraTypes.XF86
 import Data.List
 import qualified XMonad.StackSet as W
@@ -34,8 +35,8 @@ backgroundColor   = "#091f2c"
 middleColor       = "#cac46e"
 foregroundColor   = "#e6958b"
 
-myLayout = minimize $ spacingWithEdge 20 $
-  emptyBSP ||| Circle
+myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
+  emptyBSP ||| Circle ||| Grid ||| spiral(6/7)
 
 -- myLayout = avoidStruts $ minimize $ spacingWithEdge 10 $
 --   emptyBSP ||| Circle ||| Grid ||| ResizableTall 1 (3/100) (1/2) [] ||| spiral(6/7)
@@ -50,7 +51,9 @@ myStartupHook = do
   spawnOnce "tint2"
   spawnOnce "nm-applet"
   spawnOnce "pa-applet"
+  spawnOnce "cbatticon"
   spawnOnce "redshift-gtk"
+  spawnOnce "copyq"
   spawnOnce "dropbox"
   spawnOnce "compton"
   spawnOnce "setxkbmap -option compose:menu"
@@ -61,7 +64,8 @@ main :: IO ()
 main =
   xmonad
     $ withNavigation2DConfig def { defaultTiledNavigation = hybridNavigation }
-    $ docks $ emwh $ pagerHints
+    $ docks
+    -- $ ewmh $ pagerHints
     $ myConfig
 
 myConfig = def
@@ -108,6 +112,8 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((modm, xK_w), kill)
   , ((modm, xK_r), sendMessage Rotate)
   , ((modm, xK_t), sendMessage Swap)
+  , ((modm,               xK_a),     sendMessage Balance)
+  , ((modm .|. shiftMask, xK_a),     sendMessage Equalize)
   , ((modm .|. shiftMask, xK_f), withFocused $ windows . W.sink) 
 
     -- Directional navigation of windows

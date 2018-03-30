@@ -39,8 +39,8 @@
 
 
         ;; fonts
-        (sans-font    "Lato")
-        (et-font      "EtBembo")
+        (sans-font    "Lato Medium")
+        (et-font      "ETBembo")
         )
 
     (custom-theme-set-faces
@@ -69,13 +69,13 @@
      `(font-lock-warning-face ((,class (:foreground ,war :background ,bg1))))
      `(fringe ((,class (:background ,bg1 :foreground ,base))))
      `(header-line ((,class :background nil :inherit nil)))
-     `(highlight ((,class (:foreground ,base :background ,highlight))))
+     `(highlight ((,class (:foreground ,bg1 :background ,highlight))))
      `(hl-line ((,class (:background ,bg2))))
      `(isearch ((,class (:foreground ,bg1 :background ,mat))))
      `(lazy-highlight ((,class (:background ,highlight-dim :weight normal))))
      `(link ((,class (:foreground ,keyword :underline t))))
      `(link-visited ((,class (:foreground ,comp :underline t))))
-     `(match ((,class (:background ,highlight :foreground ,mat))))
+     `(match ((,class (:background ,highlight :foreground ,bg2))))
      `(minibuffer-prompt ((,class (:inherit bold :foreground ,const))))
      `(page-break-lines ((,class (:foreground ,act2))))
      `(region ((,class (:background ,highlight))))
@@ -158,12 +158,12 @@
      `(dired-warning ((,class (:foreground ,war))))
 
 ;;;;;; doom-neotree
-     `(doom-neotree-data-file-face ((,class(:family ,sans-font :foreground ,keyword))))
-     `(doom-neotree-dir-face ((,class(:family ,sans-font :weight normal))))
-     `(doom-neotree-file-face ((,class(:family ,sans-font))))
-     `(doom-neotree-hidden-file-face ((,class(:family ,sans-font :foreground ,act2))))
-     `(doom-neotree-media-file-face ((,class(:family ,sans-font :foreground ,highlight-dim))))
-     `(doom-neotree-text-file-face ((,class(:family ,sans-font))))
+     `(doom-neotree-data-file-face ((,class(:family ,sans-font :foreground ,keyword :height 0.9))))
+     `(doom-neotree-dir-face ((,class(:family ,sans-font :weight normal :height 0.9))))
+     `(doom-neotree-file-face ((,class(:family ,sans-font :height 0.9))))
+     `(doom-neotree-hidden-file-face ((,class(:family ,sans-font :foreground ,act2 :height 0.9))))
+     `(doom-neotree-media-file-face ((,class(:family ,sans-font :foreground ,highlight-dim :height 0.9))))
+     `(doom-neotree-text-file-face ((,class(:family ,sans-font :height 0.9))))
 
 ;;;;; ediff
      `(ediff-current-diff-A ((,class(:background ,red-bg-s :foreground ,red))))
@@ -387,10 +387,10 @@
      `(font-latex-warning-face ((,class (:foreground ,war))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,lnum :background ,bg2))))
+     `(linum ((,class (:foreground ,lnum :background nil :height 0.8 :slant italic))))
 
 ;;;;; linum-relative
-     `(linum-relative-current-face ((,class (:foreground ,comp))))
+     `(linum-relative-current-face ((,class (:foreground ,comp :background nil :height 0.8 :slant italic))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
@@ -489,10 +489,10 @@
      `(notmuch-tag-flagged ((,class (:foreground ,war))))
 
 ;;;;; neotree
-     `(neo-dir-link-face ((,class (:foreground ,base :inherit nil))))
-     `(neo-expand-btn-face ((,class (:foreground ,red-bg))))
-     `(neo-file-link-face ((,class (:foreground ,base))))
-     `(neo-root-dir-face ((,class (:foreground ,red :height 1.2))))
+     `(neo-dir-link-face ((,class (:foreground ,base :inherit nil :height 0.8))))
+     `(neo-expand-btn-face ((,class (:foreground ,red-bg :height 0.8))))
+     `(neo-file-link-face ((,class (:foreground ,base :height 0.8))))
+     `(neo-root-dir-face ((,class (:foreground ,red :height 1.1))))
 
 ;;;;; org
      `(org-agenda-clocking ((,class (:background ,highlight :foreground ,comp))))
@@ -506,8 +506,8 @@
      `(org-block-end-line ((,class (:background ,cblk-ln-bg :foreground ,cblk-ln :height 0.8))))
      `(org-clock-overlay ((,class (:foreground ,comp))))
      `(org-code ((,class (:inherit nil :foreground ,comment))))
-     `(org-column ((,class (:background ,highlight))))
-     `(org-column-title ((,class (:background ,highlight))))
+     `(org-column ((,class (:background ,bg3))))
+     `(org-column-title ((,class (:foreground ,green-bg-s))))
      `(org-date ((,class (:underline t :foreground ,var :height 0.8))))
      `(org-date-selected ((,class (:background ,blue :foreground ,base-dim))))
      `(org-document-info ((,class (:slant italic))))
@@ -521,7 +521,7 @@
      `(org-indent ((,class (:inherit org-hide))))
      `(org-kbd ((,class (:inherit region :foreground ,base :box (:line-width 1 :style released-button)))))
      `(org-level-1 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant normal :height 1.8))))
-     `(org-level-2 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant italic :height 1.7))))
+     `(org-level-2 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant italic :height 1.6))))
      `(org-level-3 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant normal :height 1.3))))
      `(org-level-4 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant normal :height 1.3))))
      `(org-level-5 ((,class (:inherit nil :foreground ,head1 :family ,et-font :weight normal :slant normal :height 1.3))))
@@ -671,7 +671,7 @@
 ;;;;; other, need more work
      `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
      `(ffap ((,class (:foreground ,base))))
-     `(flx-highlight-face ((,class (:foreground ,comp :underline nil))))
+     `(flx-highlight-face ((,class (:foreground ,bg1 :underline nil))))
      `(icompletep-determined ((,class :foreground ,keyword)))
      `(js2-external-variable ((,class (:foreground ,comp))))
      `(js2-function-param ((,class (:foreground ,const))))

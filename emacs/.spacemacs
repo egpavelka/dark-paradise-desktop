@@ -38,8 +38,8 @@
             latex-enable-auto-fill t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
-     ;;(nlinum :variables
-     ;;        nlinum-relative-mode nil)
+     (nlinum :variables
+              nlinum-relative-mode nil)
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
@@ -62,7 +62,7 @@
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(vi-tilde-fringe)
+   dotspacemacs-excluded-packages '(evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu vi-tilde-fringe)
    dotspacemacs-delete-orphan-packages t
    dotspacemacs-install-packages 'used-only))
 
@@ -75,21 +75,18 @@
    dotspacemacs-editing-style 'emacs
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '((agenda . 5)
-                                (todos . 5)
-                                (recents . 5)
+   dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
-   ;; dotspacemacs-startup-buffer-responsive t
+   dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-themes '(spacemacs-dark-paradise
                          spacemacs-babywave)
    dotspacemacs-colorize-cursor-according-to-state nil
-   dotspacemacs-default-font '("Iosevka"
-                               :size 14
+   dotspacemacs-default-font '("PragmataPro"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 0.8)
-
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-emacs-leader-key "M-m"
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -107,7 +104,7 @@
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup nil
@@ -135,25 +132,23 @@
   (defconst user-project-dir (getenv "PROJECTS_DIR"))
 
   (defconst user-org-dir   (file-name-as-directory "~/Dropbox/org"))
-  (defconst user-notes-dir (file-name-as-directory (concat user-org-dir "notes")))
-  (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "journal")))
+  (defconst user-notes-dir (file-name-as-directory (concat user-org-dir "notas")))
+  (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "diario")))
   (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/Books")))
 
-  (defconst user-bookmarks-file (concat user-notes-dir "bookmarks.org"))
-  (defconst user-gcal-file (concat user-org-dir "gcal.org"))
+  (defconst user-bookmarks-file (concat user-notes-dir "marcadores.org"))
+  (defconst user-gcal-file (concat user-org-dir "calendario.org"))
 
-  (setq exec-path-from-shell-arguments '("-c")
-        org-agenda-window-setup 'current-window
-        org-archive-location "~/Dropbox/org/planning/.task_archive.org")
+  (setq exec-path-from-shell-arguments '("-c"))
 
   (setq custom-file "~/.emacs.d/custom.el")
   (load custom-file)
   )
-
-(defun dotspacemacs/user-config ()
-  (setq auto-save-file-name-transforms
-        `((".*" "~/.emacs.d/auto-save/" t)))
-  (setq initial-buffer-choice nil)
+(
+defun dotspacemacs/user-config ()
+  (setq backup-directory-alist `(("." . "~/.emacs.d/auto-save"))
+        backup-by-copying t
+        delete-old-versions t)
   (setq-default  web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2
@@ -164,20 +159,6 @@
                 js2-missing-semi-one-line-override nil
                 typescript-indent-level 2
                 neo-window-fixed-size nil
-                line-spacing 2
-                fringe-mode 25)
-
-  (setf slime-lisp-implementations
-        `((sbcl    ("sbcl"))
-          (roswell ("ros" "-Q" "run"))
-          (roswell-dune ("ros" "-Q" "run" "-e" "(ql:quickload :dune)" "-e" "(in-package :dune)")))
-        slime-default-lisp 'roswell-dune)
-
-  (slime-setup '(slime-asdf
-                 slime-company
-                 slime-fancy
-                 slime-indentation
-                 slime-sbcl-exts
-                 slime-scratch
-                 slime-tramp))
+                line-spacing 2)
+                ;; fringe-mode 25)
   )

@@ -4,6 +4,7 @@
   '(calfw
     calfw-org
     doom-themes
+    (ligature-support :location local)
     mediawiki
     multiple-cursors
     neotree
@@ -58,8 +59,21 @@
           doom-neotree-line-spacing 4)
     (doom-themes-org-config)))
 
+(defun gigi/init-ligature-support ()
+  (use-package ligature-support))
+
 (defun gigi/init-mediawiki ()
-  (use-package mediawiki))
+  (use-package mediawiki
+    :config
+    (setq mediawiki-draft-data-file "~/.mediawiki/draft.wiki"
+          mediawiki-site-default "unfcking my life")
+    ;; Secret file
+    ;; (setq mediawiki-site-alist '(("Site name"
+    ;;                               "url"
+    ;;                               "usernme"
+    ;;                               nil ??
+    ;;                               "default page")))
+    (load-file (concat user-secrets-dir "mediawiki.el"))))
 
 (defun gigi/init-multiple-cursors ()
   (use-package multiple-cursors
@@ -123,21 +137,21 @@
     (progn
       (global-pretty-mode t)
       (global-prettify-symbols-mode 1)
-;;      (pretty-deactivate-groups
-;;       '(:equality :ordering :ordering-double :ordering-triple
-;;                   :arrows :arrows-twoheaded :punctuation
-;;                   :logic :sets))
-;;      (pretty-activate-groups
-;;       '(:greek :arithmetic-nary))
+     (pretty-deactivate-groups
+      '(:equality :ordering :ordering-double :ordering-triple
+                  :arrows :arrows-twoheaded :punctuation
+                  :logic :sets))
+     (pretty-activate-groups
+      '(:greek :arithmetic-nary))
       )))
 
-(defun gigi/init-rogue-ligatures ()
-  (use-package rogue-ligatures
-    :after rogue-utils
-    :config
-    (rogue-ligatures-setup-general)
-    (rogue-ligatures-setup-python)
-    (rogue-ligatures-setup-ess)))
+;; (defun gigi/init-rogue-ligatures ()
+;;   (use-package rogue-ligatures
+;;     :after rogue-utils
+;;     :config
+;;     (rogue-ligatures-setup-general)
+;;     (rogue-ligatures-setup-python)
+;;     (rogue-ligatures-setup-ess)))
 
 (defun gigi/init-rogue-org ()
   (use-package rogue-org

@@ -17,7 +17,7 @@ cp -r $HOME/.backgrounds/dark-paradise $DEST/backgrounds/
 cp $HOME/.config/compton.conf $DEST/
 
 # Spacemacs
-cp -r $HOME/.emacs.d $DEST/emacs/
+cp -r $HOME/.emacs.d/{init.el,spacemacs-dark-paradise-theme.el,private/gigi} $DEST/emacs/
 cp $HOME/.spacemacs $DEST/emacs/
 
 # LightDM

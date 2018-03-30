@@ -1,31 +1,10 @@
 ;;; rogue-ui.el --- Ui setup for rogue layer
 
-;; Copyright (c) 2017 Abhinav Tushar
-
-;; Author: Abhinav Tushar <lepisma@fastmail.com>
-;; Version: 0.0.1
-;; Package-Requires: ((emacs "25"))
-;; URL: https://github.com/lepisma/rogue/tree/master/local/rogue-ui
-
-;;; Commentary:
-
-;; Personal config package for setting up ui
-;; This file is not a part of GNU Emacs.
-
-;;; License:
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program. If not, see <http://www.gnu.org/licenses/>.
+;; CODE TAKEN FROM:
+;; -- Copyright (c) 2017 Abhinav Tushar
+;; -- Author: Abhinav Tushar <lepisma@fastmail.com>
+;; -- URL: https://github.com/lepisma/rogue/tree/master/local/rogue-ui
+;; with minor edits and omissions.
 
 ;;; Code:
 
@@ -54,9 +33,9 @@
   "Hide mode line. Wrap around the spacemacs' function."
   (hidden-mode-line-mode +1))
 
-;;(defun rogue-ui-no-hl-line ()
-;;  "Disable line highlight. Wrap around spacemacs' function."
-;;  (spacemacs/disable-hl-line-mode))
+;; (defun rogue-ui-no-hl-line ()
+;;   "Disable line highlight. Wrap around spacemacs' function."
+;;   (spacemacs/disable-hl-line-mode))
 
 (defun rogue-ui-setup-fringe ()
   "Setup git fringe"
@@ -120,7 +99,7 @@
   (setq eshell-prompt-function
         (lambda ()
           (concat (propertize
-                   (abbreviate-file-name (eshell/pwd)) 'face '(:foreground "#727280"))
+                   (abbreviate-file-name (eshell/pwd)) 'face '(:foreground "#ecccc2"))
                   "\nλ ")))
 
   (setq tramp-default-method "ssh"
@@ -248,10 +227,11 @@
   (rogue-utils-add-hooks '(org-agenda-mode-hook)
                          (lambda () (rogue-ui-line-spacing 0.2)))
 
-  ;; No line highlighting
-  ;;(rogue-utils-add-hooks '(text-mode-hook
-  ;;                         cfw:calendar-mode-hook)
-  ;;                       #'rogue-ui-no-hl-line)
+ ;; No line highlighting
+;; (rogue-utils-add-hooks '(text-mode-hook
+;;                          cfw:calendar-mode-hook)
+;;                        #'rogue-ui-no-hl-line)
+
 
   ;; Clear message buffer
   (with-current-buffer "*Messages*"
@@ -263,7 +243,8 @@
   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1)))
   (add-hook 'text-mode-hook #'auto-fill-mode)
   (add-hook 'term-mode-hook #'toggle-truncate-lines)
-  (add-hook 'prog-mode-hook #'nlinum-mode))
+  (add-hook 'prog-mode-hook #'nlinum-mode)
+  (add-hook 'text-mode-hook #'visual-line-mode))
 
 (provide 'rogue-ui)
 
