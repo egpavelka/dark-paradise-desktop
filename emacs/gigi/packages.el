@@ -15,7 +15,6 @@
     org-noter
     (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
     pretty-mode
-    (rogue-ligatures :location local)
     (rogue-org :location local)
     (rogue-ui :location local)
     (rogue-utils :location local)
@@ -144,14 +143,6 @@
      (pretty-activate-groups
       '(:greek :arithmetic-nary))
       )))
-
-;; (defun gigi/init-rogue-ligatures ()
-;;   (use-package rogue-ligatures
-;;     :after rogue-utils
-;;     :config
-;;     (rogue-ligatures-setup-general)
-;;     (rogue-ligatures-setup-python)
-;;     (rogue-ligatures-setup-ess)))
 
 (defun gigi/init-rogue-org ()
   (use-package rogue-org

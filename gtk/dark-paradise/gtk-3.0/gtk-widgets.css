@@ -71,7 +71,7 @@ GtkWindow {
  * states *
  **********/
 
-*:insensitive {
+*:disabled {
     color: @fg_insensitive;
     border-color: @border_insensitive;
     text-shadow: 1px 1px @light_shadow;
@@ -92,7 +92,7 @@ GtkWindow {
     color: @fg_color;
 }
 
-.gtkstyle-fallback:prelight {
+.gtkstyle-fallback:hover {
     background-color: shade(@bg_color, 1.10);
     color: @fg_color;
 }
@@ -102,7 +102,7 @@ GtkWindow {
     color: @fg_color;
 }
 
-.gtkstyle-fallback:insensitive {
+.gtkstyle-fallback:disabled {
     background-color: shade(shade(@bg_color, 0.95), 1.05);
     color: mix(@fg_color, @bg_color, 0.4);
 }
@@ -143,7 +143,7 @@ GtkWindow {
     background-color: shade(@base_color, 0.97);
 }
 
-.view:insensitive {
+.view:disabled {
     background-color: @button_bg_insensitive;
 }
 
@@ -187,7 +187,7 @@ padding: 4px;
     padding: 4px;
 }
 
-.entry:insensitive {
+.entry:disabled {
     color: @fg_insensitive;
     background-color: @button_bg_insensitive;
 }
@@ -276,10 +276,10 @@ GtkSwitch.slider,
     border-left-color: @button_border;
 }
 
-GtkSwitch:insensitive,
-.spinbutton.button:insensitive,
-GtkComboBox:insensitive,
-.button:insensitive {
+GtkSwitch:disabled,
+.spinbutton.button:disabled,
+GtkComboBox:disabled,
+.button:disabled {
     /* workaround for spinbutton */
     color: @fg_insensitive;
 
@@ -443,10 +443,10 @@ color: @selected_text_color;
 background-color: @selected_base_color;
 }
 
-GtkCheckButton.check:insensitive, GtkCheckButton.radio:insensitive,
-GtkCheckButton.check:inconsistent:insensitive,
-GtkCheckButton.radio:inconsistent:insensitive,
-GtkCheckButton.check:inconsistent, GtkCheckButton.radio:inconsistent{
+GtkCheckButton.check:disabled, GtkCheckButton.radio:disabled,
+GtkCheckButton.check:indeterminate:disabled,
+GtkCheckButton.radio:indeterminate:disabled,
+GtkCheckButton.check:indeterminate, GtkCheckButton.radio:indeterminate{
 background-color: transparent;
 }
 
@@ -565,8 +565,8 @@ GtkScale.slider {
     border-right-color: shade(mix(#BF3939, @selected_bg_color, 0.6),0.8);
 }
 
-.progressbar.horizontal:insensitive,
-GtkScale.slider.horizontal:insensitive {
+.progressbar.horizontal:disabled,
+GtkScale.slider.horizontal:disabled {
     background-image: -gtk-gradient(linear, left top, right top,
                                      from (@bg_darker),
                                      to (shade(@bg_darker, 0.9)));
@@ -594,8 +594,8 @@ GtkScale.slider.vertical {
     border-top-color: shade(mix(#BF3939, @selected_bg_color, 0.6),0.8);
 }
 
-.progressbar.vertical:insensitive,
-GtkScale.slider.vertical:insensitive {
+.progressbar.vertical:disabled,
+GtkScale.slider.vertical:disabled {
     background-image: -gtk-gradient(linear, left bottom, left top,
                                      from (@bg_darker),
                                      to (shade(@bg_darker, 0.9)));
@@ -631,14 +631,14 @@ GtkScale.mark {
     border-color: mix(@border_normal, @border_selected, 0.5);
 }
 
-.scale.highlight.left:insensitive {
+.scale.highlight.left:disabled {
     background-image: -gtk-gradient(linear, left top, right top,
                                      from (@bg_color),
                                      to (@bg_darker));
     border-color: mix(@border_normal, @border_insensitive, 0.5);
 }
 
-.scale.highlight.bottom:insensitive {
+.scale.highlight.bottom:disabled {
     background-image: -gtk-gradient(linear, left bottom, left top,
                                      from (@bg_color),
                                      to (@bg_darker));
@@ -834,12 +834,12 @@ column-header .button:hover, column-header .button:hover:focus {
 
 .menuitem .check, .menuitem .radio,
 .menuitem .check:hover, .menuitem .radio:hover,
-.menuitem .check:insensitive, .menuitem .radio:insensitive {
+.menuitem .check:disabled, .menuitem .radio:disabled {
     border-color: transparent;
     background-color: transparent;
 }
 
-.menu>*:insensitive, .menuitem>*:insensitive {
+.menu>*:disabled, .menuitem>*:disabled {
     color: mix(@menu_fg_normal, darker(@menu_bg_normal), 0.7);
     border-color: shade(@menu_bg_normal, 0.9);
     text-shadow: 1px 1px shade(@menu_bg_normal, 1.05);
@@ -879,7 +879,7 @@ column-header .button:hover, column-header .button:hover:focus {
 }
 
 .menu.button:hover, .menu.button:active,
-.menu.button:active:insensitive, .menu.button:insensitive,
+.menu.button:active:disabled, .menu.button:disabled,
 .menu.button {
     background-color: transparent;
     background-image: none;

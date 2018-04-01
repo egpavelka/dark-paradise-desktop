@@ -7,7 +7,7 @@
 
 .radio:active,
 
-.radio:insensitive {
+.radio:disabled {
     background-color: transparent;
     border-style: none;
 }
@@ -15,38 +15,38 @@
 
 .radio,
 .radio row:selected,
-.radio row:selected:focused {
+.radio row:selected:focus {
     background-image: url("assets/radio-unselected.png");
 }
 
-.radio:insensitive,
-.radio row:selected:insensitive,
-.radio row:selected:focused:insensitive {
+.radio:disabled,
+.radio row:selected:disabled,
+.radio row:selected:focus:disabled {
     background-image: url("assets/radio-unselected-insensitive.png");
 }
 
 .radio:active,
 .radio row:selected:active,
-.radio row:selected:focused:active {
+.radio row:selected:focus:active {
 	background-image: url("assets/radio-selected.png");
 }
 
-.radio:active:insensitive,
-.radio row:selected:active:insensitive,
-.radio row:selected:focused:active:insensitive {
+.radio:active:disabled,
+.radio row:selected:active:disabled,
+.radio row:selected:focus:active:disabled {
     background-image: url("assets/radio-selected-insensitive.png");
 }
 
-.radio:inconsistent,
-.radio row:selected:inconsistent,
-.radio row:selected:focused:inconsistent {
+.radio:indeterminate,
+.radio row:selected:indeterminate,
+.radio row:selected:focus:indeterminate {
     background-image: url("assets/radio-mixed.png");
 
 }
 
-.radio:inconsistent:insensitive,
-.radio row:selected:inconsistent:insensitive,
-.radio row:selected:focused:inconsistent:insensitive {
+.radio:indeterminate:disabled,
+.radio row:selected:indeterminate:disabled,
+.radio row:selected:focus:indeterminate:disabled {
     background-image: url("assets/radio-mixed-insensitive.png");
     background-color: transparent;
 }

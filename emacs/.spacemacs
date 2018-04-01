@@ -82,7 +82,7 @@
    dotspacemacs-themes '(spacemacs-dark-paradise
                          spacemacs-babywave)
    dotspacemacs-colorize-cursor-according-to-state nil
-   dotspacemacs-default-font '("PragmataPro"
+   dotspacemacs-default-font '("Fira Code"
                                :size 15
                                :weight normal
                                :width normal

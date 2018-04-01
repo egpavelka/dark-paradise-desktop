@@ -219,7 +219,7 @@ StScrollBar StButton#vhandle:active {
     background-color: #e6958b;
 }
 
-.popup-menu-item:insensitive {
+.popup-menu-item:disabled {
     color: #9f9f9f;
 }
 
@@ -264,11 +264,11 @@ StScrollBar StButton#vhandle:active {
     color: #999;
 }
 
-.popup-inactive-menu-item, .popup-inactive-menu-item:insensitive {
+.popup-inactive-menu-item, .popup-inactive-menu-item:disabled {
     color: #65A7AA;
 }
 
-.popup-subtitle-menu-item, .popup-subtitle-menu-item:insensitive {
+.popup-subtitle-menu-item, .popup-subtitle-menu-item:disabled {
     font-weight: bold;
     color: #65A7AA;
 }
@@ -374,10 +374,10 @@ StScrollBar StButton#vhandle:active {
 
 
 
-.candidate-page-button:insensitive,
-.notification-button:insensitive,
-.notification-icon-button:insensitive,
-.modal-dialog-button:insensitive {
+.candidate-page-button:disabled,
+.notification-button:disabled,
+.notification-icon-button:disabled,
+.modal-dialog-button:disabled {
     border-color:  rgba(47,165,164,0.5);
     color: #9f9f9f;
     background-gradient-direction: none;
@@ -479,7 +479,7 @@ StScrollBar StButton#vhandle:active {
     padding: 0 4px;
 }
 
-.modal-dialog StEntry:insensitive {
+.modal-dialog StEntry:disabled {
 /* chuck    border-color:  rgba(47,165,164,0.5); */
     color: #9f9f9f;
     border: 2px solid rgba(47,165,164,0.5);
@@ -2516,7 +2516,7 @@ StScrollBar StButton#vhandle:active {
     background-gradient-end: #091f2c;
 }
 
-.login-dialog .modal-dialog-button:default:insensitive {
+.login-dialog .modal-dialog-button:default:disabled {
     border-color:  rgba(47,165,164,0.5);
     color: #9f9f9f;
     background-gradient-direction: vertical;

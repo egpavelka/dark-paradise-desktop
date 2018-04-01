@@ -40,7 +40,7 @@ PanelApplet .button:active {
     border-left-color: @border_selected;
 }
 
-PanelApplet .button:prelight, PanelApplet .button:active:prelight  {
+PanelApplet .button:hover, PanelApplet .button:active:hover  {
     color: @panel_fg_selected;
     background-image: -gtk-gradient(linear, left top, left bottom,
                                      from (shade(@panel_bg_prelight, 1.05)),

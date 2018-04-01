@@ -36,13 +36,13 @@
 
 .menubar .menu.button:hover,
 .menubar .menu.button:active,
-.menubar .menu.button:active:insensitive,
-.menubar .menu.button:insensitive,
+.menubar .menu.button:active:disabled,
+.menubar .menu.button:disabled,
 .menubar .menu.button,
 .primary-toolbar .menu.button:hover,
 .primary-toolbar .menu.button:active,
-.primary-toolbar .menu.button:active:insensitive,
-.primary-toolbar .menu.button:insensitive,
+.primary-toolbar .menu.button:active:disabled,
+.primary-toolbar .menu.button:disabled,
 .primary-toolbar .menu.button {
     background-color: shade (@menu_bg_dark_color, 1.07);
     background-image: -gtk-gradient (linear,
@@ -212,9 +212,9 @@ GtkComboBox .menuitem *:hover {
 .toolbar.menubar .button .menuitem *:hover,
 GtkComboBox .menuitem *:hover,
 GtkTreeMenu .menuitem *:active,
-GtkTreeMenu .menuitem *:prelight,
+GtkTreeMenu .menuitem *:hover,
 .menuitem *:active,
-.menuitem *:prelight,
+.menuitem *:hover,
 .menuitem *:hover,
 .menuitem:hover,
 .menu .menuitem:hover {
@@ -222,13 +222,13 @@ GtkTreeMenu .menuitem *:prelight,
    	text-shadow: 0px 1px @theme_selected_shadow_color;
 }
 
-.primary-toolbar .menuitem *:insensitive,
-.toolbar .raised .button .menuitem *:insensitive,
-.toolbar.menubar .button .menuitem *:insensitive,
-.primary-toolbar .button .menuitem *:insensitive,
-.toolbar .menuitem *:insensitive,
-.menuitem:insensitive,
-.menuitem *:insensitive {
+.primary-toolbar .menuitem *:disabled,
+.toolbar .raised .button .menuitem *:disabled,
+.toolbar.menubar .button .menuitem *:disabled,
+.primary-toolbar .button .menuitem *:disabled,
+.toolbar .menuitem *:disabled,
+.menuitem:disabled,
+.menuitem *:disabled {
 	/* contextual menu insensitive */
     color: mix (@menu_fg_dark_color, @menu_bg_dark_color, 0.4);
     text-shadow: none;
@@ -238,22 +238,22 @@ GtkTreeMenu .menuitem *:prelight,
 .menuitem.radio,
 .menuitem.check:hover,
 .menuitem.radio:hover,
-.menuitem.check:insensitive,
-.menuitem.radio:insensitive,
-.menuitem.check:active:insensitive,
-.menuitem.radio:active:insensitive,
-.menuitem.check:inconsistent:insensitive,
-.menuitem.radio:inconsistent:insensitive {
+.menuitem.check:disabled,
+.menuitem.radio:disabled,
+.menuitem.check:active:disabled,
+.menuitem.radio:active:disabled,
+.menuitem.check:indeterminate:disabled,
+.menuitem.radio:indeterminate:disabled {
     border-width: 0px;
 	border-style: none;
     background-image: none;
 
 }
 
-.toolbar .raised .button .menuitem.check:inconsistent,
-.toolbar .raised .button .menuitem.radio:inconsistent,
-.menuitem.check:inconsistent,
-.menuitem.radio:inconsistent,
+.toolbar .raised .button .menuitem.check:indeterminate,
+.toolbar .raised .button .menuitem.radio:indeterminate,
+.menuitem.check:indeterminate,
+.menuitem.radio:indeterminate,
 .toolbar .raised .button .menuitem.check:active,
 .toolbar .raised .button .menuitem.radio:active,
 .menuitem.check:active,
@@ -267,10 +267,10 @@ GtkTreeMenu .menuitem *:prelight,
 }
 
 /* menuitem.chek de opciones visualizacion nautilus 3.6  */
-.toolbar .raised .button .menuitem.check:inconsistent:hover,
-.toolbar .raised .button .menuitem.radio:inconsistent:hover,
-.menuitem.check:inconsistent:hover,
-.menuitem.radio:inconsistent:hover,
+.toolbar .raised .button .menuitem.check:indeterminate:hover,
+.toolbar .raised .button .menuitem.radio:indeterminate:hover,
+.menuitem.check:indeterminate:hover,
+.menuitem.radio:indeterminate:hover,
 .toolbar .raised .button .menuitem.check:active:hover,
 .toolbar .raised .button .menuitem.radio:active:hover,
 .menuitem.check:active:hover,
@@ -280,12 +280,12 @@ GtkTreeMenu .menuitem *:prelight,
     color: @theme_selected_fg_color;
 }
 
-.menuitem.check:insensitive,
-.menuitem.radio:insensitive,
-.menuitem.check:active:insensitive,
-.menuitem.radio:active:insensitive,
-.menuitem.check:inconsistent:insensitive,
-.menuitem.radio:inconsistent:insensitive {
+.menuitem.check:disabled,
+.menuitem.radio:disabled,
+.menuitem.check:active:disabled,
+.menuitem.radio:active:disabled,
+.menuitem.check:indeterminate:disabled,
+.menuitem.radio:indeterminate:disabled {
     color: mix (@menu_fg_dark_color, @menu_bg_dark_color, 0.6);
     text-shadow: none;
 
@@ -347,10 +347,10 @@ DbusmenuGtkMenu .menuitem .accelerator:hover,
     color: alpha (@theme_selected_fg_color, 0.8);
 }
 
-Genericmenuitem .menuitem .accelerator:insensitive,
-DbusmenuGtkMenu .menuitem .accelerator:insensitive,
-.menubar .menuitem .accelerator:insensitive,
-.primary-toolbar .menuitem .accelerator:insensitive {
+Genericmenuitem .menuitem .accelerator:disabled,
+DbusmenuGtkMenu .menuitem .accelerator:disabled,
+.menubar .menuitem .accelerator:disabled,
+.primary-toolbar .menuitem .accelerator:disabled {
     color: alpha (mix (@menu_fg_dark_color, @menu_bg_dark_color, 0.4), 0.8);
     text-shadow: none;
 }

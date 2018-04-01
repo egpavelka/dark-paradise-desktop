@@ -109,10 +109,9 @@
     (setq org-startup-indented t
           org-clock-idle-time 5
           ;; org-bullets-bullet-list '("╪" "⋇" "✚" "⊸" "∘")
-
-          ;; org-bullets-bullet-list '("𐄺" "⋇" "✚" "⁙" "∷" "∴" "⠒" "∙")
-          ;;  "༶" "⋗" "⁜" "𐄺" "⩾"
-          org-bullets-bullet-list '("╪" "⍎" "⩾" "≗" "═" "⍛" "—" "∘")
+          ;; org-bullets-bullet-list '("𐄺" "⋇" "⁙" "∷" "∴" "⠒" "∙")
+          org-bullets-bullet-list '("╪" "⍎" "≗" "═" "⍛" "—" "∘")
+          ;; org-bullets-bullet-list '("")
           org-ellipsis "..."
           org-pretty-entities t
           org-hide-emphasis-markers t
