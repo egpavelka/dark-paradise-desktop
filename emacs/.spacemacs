@@ -10,12 +10,13 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     octave
      (auto-completion :variables
                       auto-completion-enable-help-tooltop t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets"
-                      :disabled-for markdown org)
+                     :disabled-for markdown org)
      better-defaults
      colors
      csv
@@ -92,7 +93,7 @@
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-distinguish-gui-tab nil
    dotspacemacs-remap-Y-to-y$ nil
-   dotspacemacs-retain-visual-state-on-shift t
+   dotspacemacs-retain-visual-state-on-shift nil
    dotspacemacs-visual-line-move-text nil
    dotspacemacs-ex-substitute-global nil
    dotspacemacs-default-layout-name "Default"
@@ -146,9 +147,11 @@
   )
 (
 defun dotspacemacs/user-config ()
-  (setq backup-directory-alist `(("." . "~/.emacs.d/auto-save"))
+  (setq backup-directory-alist `(("" . "~/.emacs.d/auto-save"))
         backup-by-copying t
-        delete-old-versions t)
+        delete-old-versions t
+        kept-old-versions 2
+        kept-new-versions 4)
   (setq-default  web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2

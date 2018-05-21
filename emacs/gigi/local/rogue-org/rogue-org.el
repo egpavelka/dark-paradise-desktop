@@ -9,9 +9,10 @@
 
 (require 'org)
 
- (defun rogue-org-setup-tex ()
-  (setq org-latex-pdf-process `("latexmk -pdflatex=xelatex -f -pdf %f"))
-  (setq TeX-engine 'xetex))
+(defun rogue-org-setup-tex ()
+  ;; (setq org-latex-pdf-process `("latexmk -pdflatex=xelatex -f -pdf %f"))
+  ;; (setq TeX-engine 'xetex)
+  org-latex-create-formula-image-program 'imagemagick)
 
 (defun rogue-org-setup-babel ()
   "Setup org-babel."
@@ -41,20 +42,20 @@
      (shell      . t)
      (sql        . t))))
 
-;;;###autoload
-(defun rogue-org-shuffle-save ()
-  "Shuffle and save current file"
-  (interactive)
-  (goto-char (point-min))
-  (org-sort-entries nil ?f (lambda () (random 1000)))
-  (save-buffer))
+;; ;;;###autoload
+;; (defun rogue-org-shuffle-save ()
+;;   "Shuffle and save current file"
+;;   (interactive)
+;;   (goto-char (point-min))
+;;   (org-sort-entries nil ?f (lambda () (random 1000)))
+;;   (save-buffer))
 
-(defun rogue-org-reset-buffers ()
-  "Reset org-mode in all org buffers"
-  (dolist (buff (buffer-list))
-    (with-current-buffer buff
-      (if (string-equal "org-mode" major-mode)
-          (org-mode)))))
+;; (defun rogue-org-reset-buffers ()
+;;   "Reset org-mode in all org buffers"
+;;   (dolist (buff (buffer-list))
+;;     (with-current-buffer buff
+;;       (if (string-equal "org-mode" major-mode)
+;;           (org-mode)))))
 
 (defun rogue-org-setup-notes ()
   "Setup agenda/captures and other notes related things"
@@ -108,10 +109,9 @@
   (with-eval-after-load 'org
     (setq org-startup-indented t
           org-clock-idle-time 5
-          ;; org-bullets-bullet-list '("╪" "⋇" "✚" "⊸" "∘")
+          ;; org-bullets-bullet-list '("╪" "⋇" "⊸" "∘")
           ;; org-bullets-bullet-list '("𐄺" "⋇" "⁙" "∷" "∴" "⠒" "∙")
           org-bullets-bullet-list '("╪" "⍎" "≗" "═" "⍛" "—" "∘")
-          ;; org-bullets-bullet-list '("")
           org-ellipsis "..."
           org-pretty-entities t
           org-hide-emphasis-markers t
@@ -122,11 +122,15 @@
           spaceline-org-clock-p t)
 
     (customize-set-variable 'org-modules
-                            '(org-bibtex
+                            '(org-bookmark
+                              org-checklist
+                              org-choose
+                              org-collector
                               org-docview
                               org-habit
                               org-info
-                              org-w3m))))
+                              org-inlinetask
+                              org-toc))))
 
 (provide 'rogue-org)
 

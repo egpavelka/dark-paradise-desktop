@@ -5,7 +5,7 @@
     calfw-org
     doom-themes
     (ligature-support :location local)
-    mediawiki
+    ;; mediawiki
     multiple-cursors
     neotree
     nov
