@@ -133,12 +133,12 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((modm .|. controlMask .|. shiftMask , xK_Up), sendMessage $ ShrinkFrom U)
 
     -- Minimize
-  , ((modm,               xK_m), withFocused minimizeWindow)
-  , ((modm .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
+  -- , ((modm,               xK_m), withFocused minimizeWindow)
+  -- , ((modm .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
 
     -- LAYOUT
   , ((modm .|. shiftMask, xK_t), sendMessage NextLayout)
-  
+
     -- WORKSPACE
   , ((modm, xK_1), sequence_ [toggleOrView "browse", spawn "notify-send \"browse\""])
   , ((modm, xK_2), sequence_ [toggleOrView "playsette"  , spawn "notify-send \"playsette\""  ])
