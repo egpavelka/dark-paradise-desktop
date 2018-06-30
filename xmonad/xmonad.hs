@@ -79,7 +79,7 @@ myConfig = def
   , modMask            = mod4Mask
   , normalBorderColor  = middleColor
   , startupHook        = myStartupHook
-  , terminal           = "termite"
+  , terminal           = "kitty"
   , workspaces         = ["browse", "playsette", "personal brand", "spanish", "design", "messages", "notes", "system", "other"]
   }
 

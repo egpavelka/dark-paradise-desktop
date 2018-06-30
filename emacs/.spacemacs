@@ -26,7 +26,7 @@
      extra-langs
      gigi
      graphviz
-     ;; git
+     git
      ;; github
      haskell
      html

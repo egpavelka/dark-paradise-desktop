@@ -26,8 +26,11 @@ sudo cp /etc/lightdm/lightdm-gtk-greeter.conf $DEST/lightdm/
 # ROFI
 cp -r $HOME/.config/rofi/* $DEST/rofi/
 
-# Terminal
+# Termite
 cp $HOME/.config/termite/config $DEST/termite/
+
+# Kitty
+cp $HOME/.config/kitty/kitty.conf $DEST/kitty/
 
 # Tint2
 cp $HOME/.config/tint2/tint2rc $DEST/tint2/
