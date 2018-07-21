@@ -8,6 +8,9 @@ DEST="$HOME/.custom-themes/xmonad-dark-paradise"
 # STARTUP SCRIPT
 cp $HOME/.config/autostart/sessions/xmonad-dark-paradise $DEST/
 
+# shell options
+cp $HOME/.bashrc $DEST/
+
 # X
 cp $HOME/.Xresources $DEST/
 cp -r $HOME/.themes/dark-paradise $DEST/gtk/
