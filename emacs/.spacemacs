@@ -27,7 +27,7 @@
      gigi
      graphviz
      git
-     ;; github
+     github
      haskell
      html
      (ibuffer :variables ibuffer-group-buffers-by 'projects)

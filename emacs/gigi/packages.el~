@@ -4,29 +4,22 @@
   '(calfw
     calfw-org
     doom-themes
-    gscholar-bibtex
-    (kindle :location local)
-    mediawiki
+    (ligature-support :location local)
+    ;; mediawiki
     multiple-cursors
     neotree
     nov
-    ;;org-ac
     org-cliplink
-    org-dashboard
-    (org-expand :location (recipe :fetcher github :repo "lepisma/org-expand"))
     org-gcal
-    (org-gh :location local)
     org-journal
-    (org-make :location local)
     org-noter
     (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
-    parinfer
     pretty-mode
-    (rogue-ligatures :location local)
     (rogue-org :location local)
-    (rogue-processes :location local)
     (rogue-ui :location local)
     (rogue-utils :location local)
+    (spaceline-all-the-icons :location local)
+    (notmuch :location local)
     writeroom-mode))
 
 ;; Initialize packages
@@ -52,7 +45,7 @@
   (use-package calfw-org
     :after calfw
     :config
-    (setq cfw:org-face-agenda-item-foreground-color "#BF616A")))
+    (setq cfw:org-face-agenda-item-foreground-color "#ecccc3")))
 
 (defun gigi/init-doom-themes ()
   (use-package doom-themes
@@ -61,31 +54,78 @@
           doom-themes-enable-italic t)
 
     (doom-themes-neotree-config)
-    (setq doom-neotree-enable-variable-pitch t
+    (setq doom-neotree-enable-variable-pitch nil
           doom-neotree-file-icons 'simple
           doom-neotree-line-spacing 4)
     (doom-themes-org-config)))
 
-
-(defun gigi/init-gscholar-bibtex ()
-  (use-package gscholar-bibtex
-    :config
-    (setq gscholar-bibtex-database-file user-bib-file
-          gscholar-bibtex-default-source "Google Scholar")))
-
-(defun gigi/init-kindle ()
-  (use-package kindle
-    :config
-    (setq kindle-clipping-save-file user-clippings-file)))
+(defun gigi/init-ligature-support ()
+  (use-package ligature-support))
 
 (defun gigi/init-mediawiki ()
-  (use-package mediawiki))
+  (use-package mediawiki
+    :config
+    (setq mediawiki-draft-data-file "~/.mediawiki/draft.wiki"
+          mediawiki-site-default "unfcking my life")
+    ;; Secret file
+    ;; (setq mediawiki-site-alist '(("Site name"
+    ;;                               "url"
+    ;;                               "username"
+    ;;                               nil ??
+    ;;                               "default page")))
+    (load-file (concat user-secrets-dir "mediawiki.el"))))
 
 (defun gigi/init-multiple-cursors ()
   (use-package multiple-cursors
-    :bind (("C->" . mc/mark-next-like-this)
-           ("C-<" . mc/mark-previous-like-this)
+    :bind (("C-<" . mc/edit-beginnings-of-lines)
+           ("C->" . mc/edit-ends-of-lines)
            ("C-M-<mouse-1>" . mc/add-cursor-on-click))))
+
+(defun gigi/init-notmuch ()
+  (use-package notmuch)
+  :config
+  (setq notmuch/message-cite-reply-position 'above
+        notmuch/gnus-alias-identities '(
+                                        ("pav@egp" nil
+                                         "e.g. pavelka <pav@egpavelka.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        ("postmaster@egp" nil
+                                         "postmaster@egpavelka.com <postmaster@egpavelka.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        ("admin@egp" nil
+                                         "admin@egpavelka.com <admin@egpavelka.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        ("egpavelka@gmail" nil
+                                         "e.g. pavelka <egpavelka@gmail.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        ("myboneslikebeams@gmail" nil
+                                         "myboneslikebeams <myboneslikebeams@gmail.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        ("technisqualor@gmail" nil
+                                         "technisqualor <technisqualor@gmail.com>" ;; Sender address
+                                         nil ;; Organization header
+                                         nil ;; Extra headers
+                                         nil ;; Extra body text
+                                         nil ;; signature file)
+                                        )
+                                        gnus-alias-default-identity "egpavelka@gmail")
+                                        :init
+                                        (add-hook 'message-setup-hook 'gnus-alias-default-identity))
 
 (defun gigi/init-nov ()
   (use-package nov
@@ -95,18 +135,16 @@
 
 (defun gigi/init-neotree ()
   (use-package neotree
-    :bind ("<f8>" . neotree-toggle)
+    :after rogue-utils
+    :bind (("<f8>" . neotree-toggle)
+           ("C-c C-p" . neotree-project-dir))
     :config
-    (setq neo-msart-open t
+    (setq neo-smart-open t
           projectile-switch-project-action 'neotree-projectile-action)))
 
 (defun gigi/init-org-cliplink ()
   (use-package org-cliplink
     :bind (("C-c y" . org-cliplink))))
-
-(defun gigi/init-org-expand ()
-  (use-package org-expand
-    :bind (("C-c x" . helm-org-expand))))
 
 (defun gigi/init-org-gcal ()
   (use-package org-gcal
@@ -116,27 +154,22 @@
     :config
     (setq org-gcal-file-alist `(("egpavelka@gmail.com" . ,user-gcal-file)))
     ;; Secret file
-    ;; (setq org-gcal-client-id "<>"
-    ;;       org-gcal-client-secret "<>")
+    ;; (setq org-gcal-client-id ""
+    ;;      org-gcal-client-secret "")
     (load-file (concat user-secrets-dir "gcal.el"))))
-
-(defun gigi/init-org-gh ()
-  (use-package org-gh
-    :after org))
 
 (defun gigi/init-org-journal ()
   (use-package org-journal
     :config
-    (setq org-journal-dir user-journal-dir
-          org-journal-enable-encryption t)))
+    (setq org-journal-dir user-journal-dir)))
 
-(defun gigi/init-org-make ()
-  (use-package org-make
-    :after org))
 
 (defun gigi/init-org-noter ()
   (use-package org-noter
-    :after org))
+    :after org
+    :config
+    (org-noter-set-auto-save-last-location t)
+    ))
 
 (defun gigi/init-org-pretty-table ()
   (use-package org-pretty-table
@@ -147,16 +180,16 @@
 (defun gigi/init-pretty-mode ()
   (use-package pretty-mode
     :config
-    (global-pretty-mode t)
-    (global-prettify-symbols-mode 1)))
-
-(defun gigi/init-rogue-ligatures ()
-  (use-package rogue-ligatures
-    :after rogue-utils
-    :config
-    (rogue-ligatures-setup-general)
-    (rogue-ligatures-setup-python)
-    (rogue-ligatures-setup-ess)))
+    (progn
+      (global-pretty-mode t)
+      (global-prettify-symbols-mode 1)
+     (pretty-deactivate-groups
+      '(:equality :ordering :ordering-double :ordering-triple
+                  :arrows :arrows-twoheaded :punctuation
+                  :logic :sets))
+     (pretty-activate-groups
+      '(:greek :arithmetic-nary))
+      )))
 
 (defun gigi/init-rogue-org ()
   (use-package rogue-org
@@ -176,7 +209,16 @@
 (defun gigi/init-rogue-utils ()
   (use-package rogue-utils))
 
+(defun gigi/init-spaceline-all-the-icons ()
+  (progn
+    (use-package spaceline-all-the-icons
+      :after spaceline)
+    (use-package spaceline
+      :after powerline
+      :config
+      (setq-default mode-line-format '("%e" (:eval (spaceline-ml-ati)))))))
+
 (defun gigi/init-writeroom-mode ()
   (use-package writeroom-mode
     :config
-    (setq writeroom-restore-window-config t)))
+    (setq writeroom-restore-window-config t)0))

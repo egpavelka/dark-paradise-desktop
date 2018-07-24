@@ -19,6 +19,7 @@
     (rogue-ui :location local)
     (rogue-utils :location local)
     (spaceline-all-the-icons :location local)
+    (notmuch :location local)
     writeroom-mode))
 
 ;; Initialize packages
@@ -69,7 +70,7 @@
     ;; Secret file
     ;; (setq mediawiki-site-alist '(("Site name"
     ;;                               "url"
-    ;;                               "usernme"
+    ;;                               "username"
     ;;                               nil ??
     ;;                               "default page")))
     (load-file (concat user-secrets-dir "mediawiki.el"))))
@@ -79,6 +80,15 @@
     :bind (("C-<" . mc/edit-beginnings-of-lines)
            ("C->" . mc/edit-ends-of-lines)
            ("C-M-<mouse-1>" . mc/add-cursor-on-click))))
+
+(defun gigi/init-notmuch ()
+  (use-package notmuch
+    :config
+    (setq notmuch/message-cite-reply-position 'above
+          gnus-alias-default-identity "egpavelka@gmail")
+    (load-file (concat user-secrets-dir "notmuch.el"))
+    :init
+    (add-hook 'message-setup-hook 'gnus-alias-default-identity)))
 
 (defun gigi/init-nov ()
   (use-package nov
@@ -93,7 +103,7 @@
            ("C-c C-p" . neotree-project-dir))
     :config
     (setq neo-smart-open t
-          projectile-switch-project-action 'neotree-projectile-action)))
+          projectile-switch-project-action 'neotree-projectile-action)0))
 
 (defun gigi/init-org-cliplink ()
   (use-package org-cliplink
