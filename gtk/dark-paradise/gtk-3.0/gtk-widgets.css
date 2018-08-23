@@ -3,42 +3,22 @@
 ***********/
 
 * {
-    engine: none;
-
-    -GtkButton-child-displacement-x: 1;
-    -GtkButton-child-displacement-y: 1;
-    -GtkButton-default-border: 0;
-    -GtkButton-interior-focus: false;
+    /* engine: none; */
     -GtkCheckButton-indicator-size: 12;
     -GtkCheckMenuItem-indicator-size: 12;
     -GtkExpander-expander-size: 11;
     -GtkHTML-link-color: @link_color;
     -GtkIMHtml-hyperlink-color: @link_color;
-    -GtkMenu-horizontal-padding: 0;
-    -GtkMenu-vertical-padding: 0;
     -GtkMenuBar-internal-padding: 0;
-    -GtkMenuItem-arrow-scaling: 0.5;
-    -GtkPaned-handle-size: 3;
     -GtkProgressBar-min-horizontal-bar-height: 11;
     -GtkProgressBar-min-vertical-bar-width: 11;
-    -GtkRange-arrow-scaling : 0.6;
-    -GtkRange-slider-width: 11;
-    -GtkRange-stepper-size: 20;
-    -GtkRange-stepper-spacing: 0;
-    -GtkRange-trough-border: 0;
     -GtkScale-slider-length : 24;
-    -GtkScrollbar-min-slider-length: 30;
     -GtkScrolledWindow-scrollbar-spacing: 0;
-    -GtkScrollbar-trough-border : 1;
-    -GtkScrolledWindow-scrollbars-within-bevel : 0;
     -GtkSeparatorMenuItem-horizontal-padding: 0;
     -GtkStatusbar-shadow-type: none;
     -GtkToolbar-internal-padding: 0;
     -GtkTreeView-expander-size: 11;
     -GtkTreeView-vertical-separator: 0;
-    -GtkWidget-focus-padding: 0;
-    -GtkWidget-link-color: @link_color;
-    -GtkWidget-visited-link-color: @link_color;
     -GtkTextView-error-underline-color: @error_color;
     -GtkWindow-resize-grip-height: 13;
     -GtkWindow-resize-grip-width: 13;
@@ -51,6 +31,7 @@
 GtkWindow {
     color: @fg_color;
     background-color: @bg_color;
+    padding: 2px;
 }
 
 .frame {
@@ -127,6 +108,7 @@ GtkWindow {
 .tooltip, .floating-bar {
     border:solid;
     border-width: 1px;
+    padding: 4px;
     color: @tooltip_fg_color;
     background-image: none;
     background-color: @tooltip_bg_color;
@@ -134,12 +116,11 @@ GtkWindow {
 }
 
 .view, .entry {
+  padding: 4px;
     color: @text_color;
-    -GtkWidget-focus-line-pattern: "\1";
 }
 
 .view {
-    padding: 2px;
     background-color: shade(@base_color, 0.97);
 }
 
@@ -158,7 +139,9 @@ GtkWindow {
 
 .view row:nth-child(even) {
     background-color: shade(@base_color, 0.97);
-}VteTerminal, vte-terminal {
+}
+
+VteTerminal, vte-terminal {
 padding: 4px;
 }
 
@@ -193,7 +176,8 @@ padding: 4px;
 }
 
 .cell {
-    background-color: @bg_lighter;
+  background-color: @bg_lighter;
+  padding: 4px;
 }
 
 .highlight {
@@ -233,7 +217,7 @@ TerminalScreen {
 
 GtkAssistant .sidebar .highlight {
     color: @selected_text_color;
-    font: bold;
+    font-weight: bold;
 }
 
 GtkAssistant .sidebar {
@@ -247,16 +231,14 @@ GtkAssistant .sidebar {
  ***********/
 
 .button {
-    -GtkWidget-focus-padding: 1;
-    -GtkWidget-focus-line-width: 0;
-    padding: 2px;
+    padding: 4px;
     border-style: solid;
     border-width: 1px;
     border-radius: 3px;
 }
 
 .button.text-button {
-	padding: 2px 6px;
+	padding: 4px 6px;
 }
 
 .button.image-button {
@@ -319,11 +301,11 @@ GtkSwitch.trough:active {
 }
 
 GtkComboBox, GtkComboBox>.button {
-    padding: 1px 2px;
+    padding: 4px;
 }
 
 GtkComboBox .menuitem {
-    padding: 1px 3px;
+    padding: 4px;
 }
 
 .combobox-entry .entry {
@@ -355,15 +337,14 @@ GtkComboBox .menuitem {
 }
 
 GtkSwitch {
-    -GtkWidget-focus-padding: 1;
-    -GtkWidget-focus-line-width: 0;
+  padding: 3px;
     border-radius: 3px 0 0 3px;
-    font: bold;
+    font-weight: bold;
 }
 
 GtkSwitch:active {
     border-radius: 0 3px 3px 0;
-    font: bold;
+    font-weight: bold;
 }
 
 GtkSwitch.trough {
@@ -371,16 +352,16 @@ GtkSwitch.trough {
 }
 
 .header .button {
-    font: bold;
+  font-weight: bold;
+  padding: 5px;
 }
 
 column-header>.button {
-    padding: 1px 3px 0px 5px;
+    padding: 5px;
     border-radius: 0;
     border-width: 0px 1px 1px 0px;
     border-right-color: mix(@fg_color, @notebook_active, 0.88);
     border-bottom-color: @border_normal;
-
     background-color: @notebook_active;
     background-image: none;
 }
@@ -422,8 +403,6 @@ GtkCheckButton.check, GtkCheckButton.radio {
     border-width: 1px;
     background-color: @radio_bg_normal;
     border-color: @button_border;
-
-    -GtkWidget-focus-line-pattern: "\1\1";
 }
 
 GtkCheckButton.check:active, GtkCheckButton.radio:active {
@@ -447,7 +426,7 @@ GtkCheckButton.check:disabled, GtkCheckButton.radio:disabled,
 GtkCheckButton.check:indeterminate:disabled,
 GtkCheckButton.radio:indeterminate:disabled,
 GtkCheckButton.check:indeterminate, GtkCheckButton.radio:indeterminate{
-background-color: transparent;
+background-color: @question_fg_color;
 }
 
 
@@ -529,7 +508,7 @@ GtkScale.vertical.trough {
 GtkScale, GtkProgressBar {
     border-style: solid;
     border-width: 1px;
-    padding: 0;
+    padding: 2px;
 }
 
 GtkProgressBar {
@@ -538,10 +517,8 @@ GtkProgressBar {
 }
 
 GtkScale {
-    -GtkRange-slider-width: 10;
     -GtkScale-slider-length: 20;
-    -GtkWidget-focus-line-width: 0;
-    -GtkWidget-focus-padding: 3;
+    padding: 3px;
     border-radius: 2px;
 }
 
@@ -551,8 +528,7 @@ GtkScale.slider {
 }
 
 GtkScale.slider.vertical {
-    border-width: 1px 1px 1px 0;
-    border-width: 1px 1px 0 1px;
+    border-width: 3px 1px;
 }
 
 .progressbar,
@@ -650,15 +626,15 @@ GtkScale.mark {
  ******************/
 
 .notebook {
-    -GtkWidget-focus-line-width: 0;
     background-color: @notebook_active;
     border-color: @border_normal;
     border-style: solid;
     border-width: 1px;
+    padding: 7px;
 }
 
 tab * {
-    padding: 2px 2px 1px 2px;
+    padding: 5px;
 }
 
 .notebook tab {
@@ -783,6 +759,7 @@ column-header .button:hover, column-header .button:hover:focus {
  ***********/
 
 .menubar {
+  padding: 5px;
     color: @menubar_fg_normal;
     background-color: @menubar_bg_normal;
     background-image: -gtk-gradient (linear,
@@ -801,7 +778,7 @@ column-header .button:hover, column-header .button:hover:focus {
 }
 
 .menubar>.menuitem {
-    padding: 3px 6px 3px 6px;
+    padding: 7px;
 }
 
 .menubar>.menuitem:hover {
@@ -820,7 +797,7 @@ column-header .button:hover, column-header .button:hover:focus {
     border: solid;
     border-width: 1px;
     border-color: shade(@menu_bg_normal, 0.8);
-    padding: 1px;
+    padding: 7px;
 }
 
 .menu *:hover, .menu *:active:hover, .menu *:selected {
@@ -828,15 +805,15 @@ column-header .button:hover, column-header .button:hover:focus {
 }
 
 .menuitem {
-    padding: 3px 4px;
+    padding: 5px;
     border-width: 1px 1px 1px 1px;
 }
 
 .menuitem .check, .menuitem .radio,
 .menuitem .check:hover, .menuitem .radio:hover,
 .menuitem .check:disabled, .menuitem .radio:disabled {
-    border-color: transparent;
-    background-color: transparent;
+    border-color: #667782;
+    background-color: #445560;
 }
 
 .menu>*:disabled, .menuitem>*:disabled {
@@ -860,7 +837,7 @@ column-header .button:hover, column-header .button:hover:focus {
 }
 
 .menuitem.separator {
-    padding: 1px;
+    padding: 2px;
     color: transparent;
     background-image: -gtk-gradient (linear,
                0 0, 1 0,
@@ -891,6 +868,7 @@ column-header .button:hover, column-header .button:hover:focus {
  ***********/
 
 .toolbar {
+  padding: 5px;
     color: @fg_color;
     background-color: @bg_color;
     background-image: -gtk-gradient (linear,
@@ -930,7 +908,7 @@ GtkHandleBox {
  * sidebar *
  ***********/
 .sidebar {
--GtkWidget-focus-padding: 3;
+  padding: 5px;
     background-color: @bg_lighter;
 }
 

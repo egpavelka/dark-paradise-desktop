@@ -110,22 +110,7 @@
   (setq ielm-prompt "λ "
         ielm-prompt-internal "λ ")
 
-  ;; Ranger stuff
-  (setq ranger-cleanup-on-disable t
-        ranger-show-hidden t
-        ranger-parent-depth 2
-        ranger-width-preview 0.60
-        ranger-width-parents 0.15
-        ranger-modify-header t
-        ranger-max-preview-size 5
-        ranger-dont-show-binary t
-        wdired-allow-to-change-permissions t)
-
-  (ranger-override-dired-mode t)
-
-  (setq ranger-header-func (lambda () ""))
-
-  ;; nlinum
+    ;; nlinum
   (setq nlinum-highlight-current-line t
         nlinum-format " %d ")
 
@@ -202,15 +187,12 @@
                            messages-buffer-mode-hook
                            completion-list-mode-hook
                            org-agenda-mode-hook
-                           ranger-mode-hook
                            ibuffer-mode-hook
                            magit-status-mode-hook
                            magit-popup-mode-hook
                            magit-log-mode-hook
                            magit-diff-mode-hook
                            comint-mode-hook
-                           ranger-parent-dir-hook
-                           ranger-preview-dir-hook
                            slime-repl-mode-hook
                            process-menu-mode-hook)
                          #'rogue-ui-hide-mode-line)
@@ -219,7 +201,6 @@
   (rogue-utils-add-hooks '(text-mode-hook
                            helm-mode-hook
                            prog-mode-hook
-                           ranger-mode-hook
                            ibuffer-mode-hook
                            comint-mode-hook)
                          (lambda () (rogue-ui-line-spacing 0.1)))

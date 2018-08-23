@@ -10,24 +10,22 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     octave
      (auto-completion :variables
                       auto-completion-enable-help-tooltop t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-private-snippets-directory "~/.emacs.d/private/snippets"
                      :disabled-for markdown org)
      better-defaults
      colors
      csv
-     dash
+     django
      emacs-lisp
      evernote
      extra-langs
      gigi
-     graphviz
+     ;; graphviz
      git
-     github
+     ;; github
      haskell
      html
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
@@ -39,8 +37,9 @@
             latex-enable-auto-fill t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
-     (nlinum :variables
-              nlinum-relative-mode nil)
+     (nlinum :variablesd
+             nlinum-relative-mode nil)
+     octave
      (org :variables
           org-enable-bootstrap-support t
           org-enable-github-support t
@@ -48,22 +47,20 @@
      pandoc
      pdf-tools
      python
-     (ranger :variables
-             ranger-show-preview t)
-     restclient
      react
-     ruby
+     (ruby :variables
+           ;; ruby-enable-enh-ruby-mode t
+           ruby-version-manager 'rvm)
      ruby-on-rails
      sql
      theming
-     tmux
      twitter
-     typography
+     ;; typography ;; use typo-mode to cycle among typographic characters for quotation marks, brackets, dashes, ellipses
      yaml
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu vi-tilde-fringe)
+   dotspacemacs-excluded-packages '(evil-anzu evil-args evil-ediff evil-escape evil-exchange evil-iedit-state evil-indent-plus evil-lisp-state evil-mv evil-nerd-commenter evil-matchit evil-numbers evil-search-highlight-persist evil-surround evil-tutor evil-unimpaired evil-visual-dark-mode vi-tilde-fringe)
    dotspacemacs-delete-orphan-packages t
    dotspacemacs-install-packages 'used-only))
 
@@ -145,13 +142,19 @@
   (setq custom-file "~/.emacs.d/custom.el")
   (load custom-file)
   )
-(
-defun dotspacemacs/user-config ()
-  (setq backup-directory-alist `(("" . "~/.emacs.d/auto-save"))
+(defun dotspacemacs/user-config ()
+  (setq ;; make-backup-files nil
+   ;; auto-save-default nil
         backup-by-copying t
+        backup-directory-alist `((".*" . ,temporary-file-directory))
+        auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
         delete-old-versions t
         kept-old-versions 2
-        kept-new-versions 4)
+        kept-new-versions 4
+        version-control t
+        magit-repository-directories '("~/Code/Current/")
+        global-git-commit-mode t
+        )
   (setq-default  web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2
@@ -162,6 +165,11 @@ defun dotspacemacs/user-config ()
                 js2-missing-semi-one-line-override nil
                 typescript-indent-level 2
                 neo-window-fixed-size nil
-                line-spacing 2)
-                ;; fringe-mode 25)
+                line-spacing 2
+                fringe-mode 15
+                max-mini-window-height 1)
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
   )

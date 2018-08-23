@@ -28,8 +28,10 @@ style "default" = "default-thickness"
 
 	GtkEntry::honors-transparent-bg-hint = 1
 
-	GtkMenu::horizontal-padding = 0
-	GtkMenu::vertical-padding = 0
+	GtkMenu::horizontal-padding = 5
+	GtkMenu::vertical-padding = 5
+  GtkImageMenuItem::horizontal-padding = 5
+  GtkImageMenuItem::vertical-padding = 3
 
 	# The following line hints to gecko (and possibly other appliations)
 	# that the entry should be drawn transparently on the canvas.
@@ -116,7 +118,7 @@ style "default" = "default-thickness"
 		listviewstyle		= 0					# 0 = nothing, 1 = dotted
 		menubaritemstyle	= 0					# 0 = menuitem look, 1 = button look
 		menubarstyle		= 1					# 0 = flat, 1 = glassy, 2 = gradient, 3 = striped
-		#menuitemstyle		= 0					# 0 = flat, 1 = glassy, 2 = striped
+		menuitemstyle		= 1					# 0 = flat, 1 = glassy, 2 = striped
 		menustyle			= 0					# 0 = no vertical menu stripe, 1 = display vertical menu stripe
 		progressbarstyle	= 1					# 0 = nothing, 1 = stripes, 2 = lines
 		reliefstyle			= 0					# 0 = flat, 1 = inset, 2 = shadow

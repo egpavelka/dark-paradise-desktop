@@ -14,6 +14,7 @@
     org-journal
     org-noter
     (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
+    (pianobar :location (recipe :fetcher github :repo "agrif/pianobar.el"))
     pretty-mode
     (rogue-org :location local)
     (rogue-ui :location local)
@@ -133,6 +134,14 @@
     :config
     (org-noter-set-auto-save-last-location t)
     ))
+
+(defun gigi/init-pianobar ()
+  (use-package pianobar
+    :config
+    (setq ;; pianobar-config t
+          pianobar-run-in-background t)
+     (load-file (concat user-secrets-dir "pianobar.el")))
+  )
 
 (defun gigi/init-org-pretty-table ()
   (use-package org-pretty-table

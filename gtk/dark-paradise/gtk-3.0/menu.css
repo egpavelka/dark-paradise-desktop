@@ -20,7 +20,7 @@
                                      from (shade(@menu_bg_dark_color, 1.03)),
                                      to   (shade(@menu_bg_dark_color, 0.97)));
 
-    padding: 5px 0px;
+    padding: 10px 7px;
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 0px;
@@ -44,6 +44,7 @@
 .primary-toolbar .menu.button:active:disabled,
 .primary-toolbar .menu.button:disabled,
 .primary-toolbar .menu.button {
+    padding: 5px;
     background-color: shade (@menu_bg_dark_color, 1.07);
     background-image: -gtk-gradient (linear,
                                      left top, left bottom,
@@ -58,7 +59,6 @@
 }
 
 .menu.button {
-	padding: 0px;
     background-image: none;
     background-color: shade (@menu_bg_dark_color, 0.95);
 	color: mix (@menu_fg_dark_color, @menu_bg_dark_color, 0.3);
@@ -147,10 +147,10 @@ DbusmenuGtkMenu .menuitem,
 .primary-toolbar .button .menuitem,
 .menu .menuitem,
 .menuitem {
-    -GtkMenuItem-arrow-scaling: 0.7;
+    
     background: transparent;
 
-    padding: 2px 4px;
+  padding: 5px 7px;
 	border-radius: 0px;
 
     color: @menu_fg_dark_color;
