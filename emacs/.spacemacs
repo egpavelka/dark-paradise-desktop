@@ -129,10 +129,10 @@
   (defconst user-secrets-dir (file-name-as-directory (concat user-layer-dir "secrets")))
   (defconst user-project-dir (getenv "PROJECTS_DIR"))
 
-  (defconst user-org-dir   (file-name-as-directory "~/Dropbox/org"))
+  (defconst user-org-dir   (file-name-as-directory "/media/documentos/org"))
   (defconst user-notes-dir (file-name-as-directory (concat user-org-dir "notas")))
   (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "diario")))
-  (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/Books")))
+  (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/libros")))
 
   (defconst user-bookmarks-file (concat user-notes-dir "marcadores.org"))
   (defconst user-gcal-file (concat user-org-dir "calendario.org"))
