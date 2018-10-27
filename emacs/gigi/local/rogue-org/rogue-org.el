@@ -65,7 +65,7 @@
   (with-eval-after-load 'org
     ;; Capture templates
     (setq org-capture-templates
-          '(("t" "TAREA" entry (file+headline "/media/documentos/org/tareas.org" "0.0 everything that rises must converge")
+          '(("t" "TAREA" entry (file+headline "~/Media/documentos/documentos/org/tareas.org" "0.0 everything that rises must converge")
              "** TODO %?\n  %i\n  %a")
             ("e" "EVENTO DE CALENDARIO" entry (file user-gcal-file)
              "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
@@ -81,14 +81,14 @@
           org-refile-targets '((nil :maxlevel . 1)
                                (org-agenda-files :maxlevel . 1)))
 
-    (setq org-archive-location "/media/documentos/org/.archivo_de_tareas.org"
+    (setq org-archive-location "~/Media/documentos/org/.archivo_de_tareas.org"
           org-agenda-window-setup 'current-window
-          org-agenda-files '("/media/documentos/org"
-                             "/media/documentos/org/cursos"
-                             "/media/documentos/org/español"))
-          ;; "/media/documentos/org/desarrollo"
-          ;; "/media/documentos/org/escritura"
-          ;; "/media/documentos/org/investigaciones"
+          org-agenda-files '("~/Media/documentos/org"
+                             "~/Media/documentos/org/cursos"
+                             "~/Media/documentos/org/español"))
+          ;; "~/Media/documentos/org/desarrollo"
+          ;; "~/Media/documentos/org/escritura"
+          ;; "~/Media/documentos/org/investigaciones"
 
     (setq org-agenda-custom-commands
           '(("n" "Agenda"

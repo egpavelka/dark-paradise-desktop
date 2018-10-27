@@ -24,7 +24,6 @@ import XMonad.Util.CustomKeys
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 
--- import System.Taffybar.Hooks.PagerHints (pagerHints)
 import Graphics.X11.ExtraTypes.XF86
 import Data.List
 import qualified XMonad.StackSet as W
@@ -36,7 +35,7 @@ middleColor       = "#cac46e"
 foregroundColor   = "#e6958b"
 
 myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
-  emptyBSP ||| Circle ||| Grid ||| spiral(6/7)
+  emptyBSP ||| Circle
 
 -- myLayout = avoidStruts $ minimize $ spacingWithEdge 10 $
 --   emptyBSP ||| Circle ||| Grid ||| ResizableTall 1 (3/100) (1/2) [] ||| spiral(6/7)
@@ -45,6 +44,7 @@ myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
 
 myStartupHook :: X ()
 myStartupHook = do
+  spawnOnce "/home/gigi/.config/autostart/sessions/xmonad-dark-paradise"
   spawnOnce "/usr/lib/notify-osd/notify-osd"
   spawnOnce "light-locker"
   spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
@@ -53,8 +53,7 @@ myStartupHook = do
   spawnOnce "pa-applet"
   spawnOnce "cbatticon"
   spawnOnce "redshift-gtk"
-  spawnOnce "copyq"
-  spawnOnce "dropbox"
+  spawnOnce "megasync"
   spawnOnce "compton"
   spawnOnce "setxkbmap -option compose:menu"
 

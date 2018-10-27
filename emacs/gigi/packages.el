@@ -1,9 +1,10 @@
 ;;; packages.el --- rogue Layer packages File for Spacemacs
 
 (defconst gigi-packages
-  '(calfw
+  '(all-the-icons
+    calfw
     calfw-org
-    doom-themes
+    ;; doom-themes
     (ligature-support :location local)
     ;; mediawiki
     multiple-cursors
@@ -48,17 +49,18 @@
     :config
     (setq cfw:org-face-agenda-item-foreground-color "#ecccc3")))
 
-(defun gigi/init-doom-themes ()
-  (use-package doom-themes
-    :config
-    (setq doom-themes-enable-bold t
-          doom-themes-enable-italic t)
+;; (defun gigi/init-doom-themes ()
+;;   (use-package doom-themes
+;;     :config
+;;     (setq doom-themes-enable-bold t
+;;           doom-themes-enable-italic t
+;;           neo-theme 'icons)
 
-    (doom-themes-neotree-config)
-    (setq doom-neotree-enable-variable-pitch nil
-          doom-neotree-file-icons 'simple
-          doom-neotree-line-spacing 4)
-    (doom-themes-org-config)))
+    ;;(doom-themes-neotree-config)
+    ;; (setq doom-neotree-enable-variable-pitch nil
+    ;;       doom-neotree-file-icons 'simple
+    ;;       doom-neotree-line-spacing 4)
+    ;; (doom-themes-org-config)))
 
 (defun gigi/init-ligature-support ()
   (use-package ligature-support))
@@ -82,6 +84,18 @@
            ("C->" . mc/edit-ends-of-lines)
            ("C-M-<mouse-1>" . mc/add-cursor-on-click))))
 
+(defun gigi/init-neotree ()
+  (use-package neotree
+    :after rogue-utils
+    :bind (("<f8>" . neotree-toggle)
+           ("C-c C-p" . neotree-project-dir))
+    :config
+    (setq neo-smart-open t
+          neo-theme 'icons
+          neo-show-updir-line nil
+          neo-mode-line 'none
+          projectile-switch-project-action 'neotree-projectile-action)0))
+
 (defun gigi/init-notmuch ()
   (use-package notmuch
     :config
@@ -96,15 +110,6 @@
     :config
     (push '("\\.epub\\'" . nov-mode) auto-mode-alist)
     (setq nov-text-width 80)))
-
-(defun gigi/init-neotree ()
-  (use-package neotree
-    :after rogue-utils
-    :bind (("<f8>" . neotree-toggle)
-           ("C-c C-p" . neotree-project-dir))
-    :config
-    (setq neo-smart-open t
-          projectile-switch-project-action 'neotree-projectile-action)0))
 
 (defun gigi/init-org-cliplink ()
   (use-package org-cliplink
@@ -135,19 +140,19 @@
     (org-noter-set-auto-save-last-location t)
     ))
 
-(defun gigi/init-pianobar ()
-  (use-package pianobar
-    :config
-    (setq ;; pianobar-config t
-          pianobar-run-in-background t)
-     (load-file (concat user-secrets-dir "pianobar.el")))
-  )
-
 (defun gigi/init-org-pretty-table ()
   (use-package org-pretty-table
     :demand t
     :init
     (add-hook 'org-mode-hook (lambda () (org-pretty-table-mode 1)))))
+
+(defun gigi/init-pianobar ()
+  (use-package pianobar
+    :config
+    (setq ;; pianobar-config t
+     pianobar-run-in-background t)
+    (load-file (concat user-secrets-dir "pianobar.el")))
+  )
 
 (defun gigi/init-pretty-mode ()
   (use-package pretty-mode

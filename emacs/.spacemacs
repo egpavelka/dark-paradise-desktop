@@ -77,8 +77,7 @@
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
-   dotspacemacs-themes '(spacemacs-dark-paradise
-                         spacemacs-babywave)
+   dotspacemacs-themes '(spacemacs-dark-paradise)
    dotspacemacs-colorize-cursor-according-to-state nil
    dotspacemacs-default-font '("Fira Code"
                                :size 15
@@ -129,10 +128,10 @@
   (defconst user-secrets-dir (file-name-as-directory (concat user-layer-dir "secrets")))
   (defconst user-project-dir (getenv "PROJECTS_DIR"))
 
-  (defconst user-org-dir   (file-name-as-directory "/media/documentos/org"))
+  (defconst user-org-dir   (file-name-as-directory "~/Media/documentos/org"))
   (defconst user-notes-dir (file-name-as-directory (concat user-org-dir "notas")))
   (defconst user-journal-dir (file-name-as-directory (concat user-org-dir "diario")))
-  (defconst user-books-dir (file-name-as-directory (concat user-org-dir "/media/libros")))
+  (defconst user-books-dir (file-name-as-directory (concat user-org-dir "~/Media/libros")))
 
   (defconst user-bookmarks-file (concat user-notes-dir "marcadores.org"))
   (defconst user-gcal-file (concat user-org-dir "calendario.org"))

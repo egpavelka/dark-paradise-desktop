@@ -19,6 +19,9 @@ alias killorphans="yay -Rns $(yay -Qtdq)"
 alias installedprograms="comm -23 <(yay -Qqt | sort) <(yay -Qqg base | sort)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.gem/bin"
-export GEM_HOME=$HOME/.gem
-export GEM_PATH=$HOME/.gem
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# export PATH="$PATH:$HOME/.gem/bin"
+# export GEM_HOME=$HOME/.gem
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
