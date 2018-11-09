@@ -10,6 +10,7 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     php
      (auto-completion :variables
                       auto-completion-enable-help-tooltop t
                       auto-completion-enable-snippets-in-popup t
@@ -22,10 +23,10 @@
      emacs-lisp
      evernote
      extra-langs
+     finance
      gigi
-     ;; graphviz
      git
-     ;; github
+     go
      haskell
      html
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
@@ -37,23 +38,29 @@
             latex-enable-auto-fill t)
      (markdown :variables
                markdown-live-preview-engine 'vmd)
-     (nlinum :variablesd
+     ;; nixos
+     (nlinum :variables
              nlinum-relative-mode nil)
      octave
      (org :variables
           org-enable-bootstrap-support t
-          org-enable-github-support t
-          org-enable-reveal-js-support t)
+          ;; org-enable-github-support t
+          ;; org-enable-reveal-js-support t
+          org-projectile-file "TODO.org")
      pandoc
      pdf-tools
-     python
+     (pythons :variables
+              python-test-runner 'pytest
+              python-enable-yapf-format-on-save t
+              python-sort-imports-on-save t)
      react
      (ruby :variables
-           ;; ruby-enable-enh-ruby-mode t
-           ruby-version-manager 'rvm)
+           ruby-enable-enh-ruby-mode t
+           ruby-version-manager 'rvm
+           ruby-test-runner 'rspec)
      ruby-on-rails
      sql
-     theming
+     ;; theming
      twitter
      ;; typography ;; use typo-mode to cycle among typographic characters for quotation marks, brackets, dashes, ellipses
      yaml

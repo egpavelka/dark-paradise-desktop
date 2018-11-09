@@ -4,12 +4,12 @@
   '(all-the-icons
     calfw
     calfw-org
-    ;; doom-themes
+    editorconfig
+    graphql
     (ligature-support :location local)
-    ;; mediawiki
+    mediawiki
     multiple-cursors
     neotree
-    nov
     org-cliplink
     org-gcal
     org-journal
@@ -49,18 +49,14 @@
     :config
     (setq cfw:org-face-agenda-item-foreground-color "#ecccc3")))
 
-;; (defun gigi/init-doom-themes ()
-;;   (use-package doom-themes
-;;     :config
-;;     (setq doom-themes-enable-bold t
-;;           doom-themes-enable-italic t
-;;           neo-theme 'icons)
+(defun gigi/init-editorconfig ()
+  (use-package editorconfig
+    :ensure t
+    :config
+    (editorconfig-mode 1)))
 
-    ;;(doom-themes-neotree-config)
-    ;; (setq doom-neotree-enable-variable-pitch nil
-    ;;       doom-neotree-file-icons 'simple
-    ;;       doom-neotree-line-spacing 4)
-    ;; (doom-themes-org-config)))
+(defun gigi/init-graphql ()
+  (use-package graphql))
 
 (defun gigi/init-ligature-support ()
   (use-package ligature-support))
@@ -68,7 +64,7 @@
 (defun gigi/init-mediawiki ()
   (use-package mediawiki
     :config
-    (setq mediawiki-draft-data-file "~/.mediawiki/draft.wiki"
+    (setq mediawiki-draft-data-file "~/.local/share/mediawiki/draft.wiki"
           mediawiki-site-default "unfcking my life")
     ;; Secret file
     ;; (setq mediawiki-site-alist '(("Site name"
@@ -93,7 +89,6 @@
     (setq neo-smart-open t
           neo-theme 'icons
           neo-show-updir-line nil
-          neo-mode-line 'none
           projectile-switch-project-action 'neotree-projectile-action)0))
 
 (defun gigi/init-notmuch ()
@@ -104,12 +99,6 @@
     (load-file (concat user-secrets-dir "notmuch.el"))
     :init
     (add-hook 'message-setup-hook 'gnus-alias-default-identity)))
-
-(defun gigi/init-nov ()
-  (use-package nov
-    :config
-    (push '("\\.epub\\'" . nov-mode) auto-mode-alist)
-    (setq nov-text-width 80)))
 
 (defun gigi/init-org-cliplink ()
   (use-package org-cliplink
@@ -189,7 +178,9 @@
 (defun gigi/init-spaceline-all-the-icons ()
   (progn
     (use-package spaceline-all-the-icons
-      :after spaceline)
+      :after spaceline
+      :config
+      (setq-default spaceline-all-the-icons--setup-neotree))
     (use-package spaceline
       :after powerline
       :config

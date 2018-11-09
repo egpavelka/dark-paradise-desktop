@@ -46,6 +46,7 @@ myStartupHook :: X ()
 myStartupHook = do
   spawnOnce "/home/gigi/.config/autostart/sessions/xmonad-dark-paradise"
   spawnOnce "/usr/lib/notify-osd/notify-osd"
+  spawnOnce "pulseaudio --start"
   spawnOnce "light-locker"
   spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
   spawnOnce "tint2"
@@ -53,7 +54,6 @@ myStartupHook = do
   spawnOnce "pa-applet"
   spawnOnce "cbatticon"
   spawnOnce "redshift-gtk"
-  spawnOnce "megasync"
   spawnOnce "compton"
   spawnOnce "setxkbmap -option compose:menu"
 
@@ -103,8 +103,8 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((0, xF86XK_AudioRaiseVolume), spawn "/usr/bin/pulseaudio-ctl up")
   , ((0, xF86XK_AudioLowerVolume), spawn "/usr/bin/pulseaudio-ctl down")
   , ((0, xF86XK_AudioMute), spawn "/usr/bin/pulseaudio-ctl mute")
-  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 5")
-  , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 5")
+  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -A 5%")
+  , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5%")
   , ((modm .|. controlMask, xK_r), spawn "pkill -USR1 redshift")
   
     -- WINDOWS
