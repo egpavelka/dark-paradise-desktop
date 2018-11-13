@@ -46,7 +46,7 @@ myStartupHook :: X ()
 myStartupHook = do
   spawnOnce "/home/gigi/.config/autostart/sessions/xmonad-dark-paradise"
   spawnOnce "/usr/lib/notify-osd/notify-osd"
-  spawnOnce "pulseaudio --start"
+  -- spawnOnce "pulseaudio --start"
   spawnOnce "light-locker"
   spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
   spawnOnce "tint2"
@@ -79,7 +79,7 @@ myConfig = def
   , normalBorderColor  = middleColor
   , startupHook        = myStartupHook
   , terminal           = "kitty"
-  , workspaces         = ["browse", "playsette", "personal brand", "spanish", "design", "messages", "notes", "system", "other"]
+  , workspaces         = ["navegando", "desarrollo [1]", "desarrollo [2]", "español", "diseño", "mensajes", "notas", "sistema", "otro"]
   }
 
 -- KEYS
@@ -97,13 +97,13 @@ addedKeys conf @ XConfig {modMask = modm} =
   [ -- SERVICES
     ((modm, xK_space) , spawn "rofi -show")
   , ((modm, xK_Return), spawn $ XMonad.terminal conf)
-  , ((0, xK_Home), spawn "maim ~/Pictures/Screenshots/$(date +%s).png")
+  , ((0, xK_Home), spawn "maim ~/Media/capturas_de_pantalla/$(date +%s).png")
   , ((shiftMask, xK_Home), spawn "maim -s  xclip -selection clipboard -t image/png")
   , ((modm, xK_q), recompile True >> restart "xmonad" True)
   , ((0, xF86XK_AudioRaiseVolume), spawn "/usr/bin/pulseaudio-ctl up")
   , ((0, xF86XK_AudioLowerVolume), spawn "/usr/bin/pulseaudio-ctl down")
   , ((0, xF86XK_AudioMute), spawn "/usr/bin/pulseaudio-ctl mute")
-  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -A 5%")
+  , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5%")
   , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5%")
   , ((modm .|. controlMask, xK_r), spawn "pkill -USR1 redshift")
   
@@ -132,24 +132,24 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((modm .|. controlMask .|. shiftMask , xK_Up), sendMessage $ ShrinkFrom U)
 
     -- Minimize
-  -- , ((modm,               xK_m), withFocused minimizeWindow)
-  -- , ((modm .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
+  --  , ((modm,               xK_m), withFocused minimizeWindow)
+  --  , ((modm .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
 
     -- LAYOUT
   , ((modm .|. shiftMask, xK_t), sendMessage NextLayout)
 
     -- WORKSPACE
-  , ((modm, xK_1), sequence_ [toggleOrView "browse", spawn "notify-send \"browse\""])
-  , ((modm, xK_2), sequence_ [toggleOrView "playsette"  , spawn "notify-send \"playsette\""  ])
-  , ((modm, xK_3), sequence_ [toggleOrView "personal brand"  , spawn "notify-send \"personal brand\""  ])
-  , ((modm, xK_4), sequence_ [toggleOrView "spanish"  , spawn "notify-send \"spanish\""  ])
-  , ((modm, xK_5), sequence_ [toggleOrView "design"  , spawn "notify-send \"design\""  ])
-  , ((modm, xK_6), sequence_ [toggleOrView "messages"   , spawn "notify-send \"messages\""   ])
-  , ((modm, xK_7), sequence_ [toggleOrView "notes"   , spawn "notify-send \"notes\""   ])
-  , ((modm, xK_8), sequence_ [toggleOrView "system"   , spawn "notify-send \"system\""   ])
-  , ((modm, xK_9), sequence_ [toggleOrView "other"   , spawn "notify-send \"other\""   ])
+  , ((modm, xK_1), sequence_ [toggleOrView "browse", spawn "notify-send \"navegando\""])
+  , ((modm, xK_2), sequence_ [toggleOrView "playsette"  , spawn "notify-send \"desarrollo [1]\""  ])
+  , ((modm, xK_3), sequence_ [toggleOrView "personal brand"  , spawn "notify-send \"desarrollo [2]\""  ])
+  , ((modm, xK_4), sequence_ [toggleOrView "spanish"  , spawn "notify-send \"español\""  ])
+  , ((modm, xK_5), sequence_ [toggleOrView "design"  , spawn "notify-send \"diseño\""  ])
+  , ((modm, xK_6), sequence_ [toggleOrView "messages"   , spawn "notify-send \"mensajes\""   ])
+  , ((modm, xK_7), sequence_ [toggleOrView "notes"   , spawn "notify-send \"notas\""   ])
+  , ((modm, xK_8), sequence_ [toggleOrView "system"   , spawn "notify-send \"sistema\""   ])
+  , ((modm, xK_9), sequence_ [toggleOrView "other"   , spawn "notify-send \"otro\""   ])
 
   -- SESSION
-  , ((0, xF86XK_Sleep), spawn "light-locker-command --lock")
+  , ((0, xF86XK_Sleep), spawn "light-locker-command --activate")
 
   ]

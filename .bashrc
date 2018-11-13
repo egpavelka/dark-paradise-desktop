@@ -7,6 +7,7 @@
 
 alias ls='ls --color=auto'
 alias logoutdm='light-locker-command -l'
+alias lockscreen='light-locker-command -a'
 
 PS1='[\u@\h \W]\$ '
 

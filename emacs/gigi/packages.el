@@ -17,7 +17,7 @@
     (org-pretty-table :location (recipe :fetcher github :repo "Fuco1/org-pretty-table"))
     (pianobar :location (recipe :fetcher github :repo "agrif/pianobar.el"))
     pretty-mode
-    (rogue-org :location local)
+    (gigi-org :location local)
     (rogue-ui :location local)
     (rogue-utils :location local)
     (spaceline-all-the-icons :location local)
@@ -157,14 +157,17 @@
       '(:greek :arithmetic-nary))
       )))
 
-(defun gigi/init-rogue-org ()
-  (use-package rogue-org
+(defun gigi/init-gigi-org ()
+  (use-package gigi-org
+    :init
+    (add-hook 'org-mode-hook #'abbrev-mode)
     :after org
     :config
-    (rogue-org-setup-general)
-    (rogue-org-setup-notes)
-    (rogue-org-setup-babel)
-    (rogue-org-setup-tex)))
+    (gigi-org-setup-general)
+    (gigi-org-setup-keywords)
+    (gigi-org-setup-notes)
+    (gigi-org-setup-babel)
+    (gigi-org-setup-tex)))
 
 (defun gigi/init-rogue-ui ()
   (use-package rogue-ui
