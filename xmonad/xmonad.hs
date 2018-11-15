@@ -105,6 +105,8 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((0, xF86XK_AudioMute), spawn "/usr/bin/pulseaudio-ctl mute")
   , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5%")
   , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5%")
+  , ((0, xF86XK_KbdBrightnessUp), spawn "light -A 50% -s sysfs/leds/asus::kbd_backlight")
+  , ((0, xF86XK_KbdBrightnessDown), spawn "light -U 50% -s sysfs/leds/asus::kbd_backlight")
   , ((modm .|. controlMask, xK_r), spawn "pkill -USR1 redshift")
   
     -- WINDOWS
@@ -139,15 +141,15 @@ addedKeys conf @ XConfig {modMask = modm} =
   , ((modm .|. shiftMask, xK_t), sendMessage NextLayout)
 
     -- WORKSPACE
-  , ((modm, xK_1), sequence_ [toggleOrView "browse", spawn "notify-send \"navegando\""])
-  , ((modm, xK_2), sequence_ [toggleOrView "playsette"  , spawn "notify-send \"desarrollo [1]\""  ])
-  , ((modm, xK_3), sequence_ [toggleOrView "personal brand"  , spawn "notify-send \"desarrollo [2]\""  ])
-  , ((modm, xK_4), sequence_ [toggleOrView "spanish"  , spawn "notify-send \"español\""  ])
-  , ((modm, xK_5), sequence_ [toggleOrView "design"  , spawn "notify-send \"diseño\""  ])
-  , ((modm, xK_6), sequence_ [toggleOrView "messages"   , spawn "notify-send \"mensajes\""   ])
-  , ((modm, xK_7), sequence_ [toggleOrView "notes"   , spawn "notify-send \"notas\""   ])
-  , ((modm, xK_8), sequence_ [toggleOrView "system"   , spawn "notify-send \"sistema\""   ])
-  , ((modm, xK_9), sequence_ [toggleOrView "other"   , spawn "notify-send \"otro\""   ])
+  , ((modm, xK_1), sequence_ [toggleOrView "navegando", spawn "notify-send \"navegando\""])
+  , ((modm, xK_2), sequence_ [toggleOrView "desarrollo [1]"  , spawn "notify-send \"desarrollo [1]\""  ])
+  , ((modm, xK_3), sequence_ [toggleOrView "desarrollo [2]"  , spawn "notify-send \"desarrollo [2]\""  ])
+  , ((modm, xK_4), sequence_ [toggleOrView "español"  , spawn "notify-send \"español\""  ])
+  , ((modm, xK_5), sequence_ [toggleOrView "diseño"  , spawn "notify-send \"diseño\""  ])
+  , ((modm, xK_6), sequence_ [toggleOrView "mensajes"   , spawn "notify-send \"mensajes\""   ])
+  , ((modm, xK_7), sequence_ [toggleOrView "notas"   , spawn "notify-send \"notas\""   ])
+  , ((modm, xK_8), sequence_ [toggleOrView "sistema"   , spawn "notify-send \"sistema\""   ])
+  , ((modm, xK_9), sequence_ [toggleOrView "otro"   , spawn "notify-send \"otro\""   ])
 
   -- SESSION
   , ((0, xF86XK_Sleep), spawn "light-locker-command --activate")

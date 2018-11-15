@@ -94,18 +94,24 @@
               (org-agenda-overriding-header "próximas fechas límite")))))))
 
 (defun gigi-org-setup-keywords ()
+
+  (defface keyword-icons-face
+    '((t (:inherit none :background nil :foreground "#d07c67" :height 1.5)))
+    "face for bullet journal style icons"
+    )
+
   (defvar org-mode-keywords
-                          '(("⛥" . font-lock-keyword-face)
-                            ("▲" . font-lock-keyword-face)
-                            ("❗" . font-lock-keyword-face)
-                            ("✓" . font-lock-keyword-face)
-                            ("<" . font-lock-keyword-face)
-                            ("▪" . font-lock-keyword-face)
-                            ("❓" . font-lock-keyword-face)
-                            ("⛅" . font-lock-keyword-face)
-                            ("🗲" . font-lock-keyword-face)
-                            ("♥" . font-lock-keyword-face)
-                            ("＄" . font-lock-keyword-face)
+                          '(("⛥" . 'keyword-icons-face)
+                            ("▲" . 'keyword-icons-face)
+                            ("❗" . 'keyword-icons-face)
+                            ("✓" . 'keyword-icons-face)
+                            ("<" . 'keyword-icons-face)
+                            ("▪" . 'keyword-icons-face)
+                            ("❓" . 'keyword-icons-face)
+                            ("⛅" . 'keyword-icons-face)
+                            ("🗲" . 'keyword-icons-face)
+                            ("♥" . 'keyword-icons-face)
+                            ("＄" . 'keyword-icons-face)
                             ))
   (font-lock-add-keywords 'org-mode org-mode-keywords)
   )

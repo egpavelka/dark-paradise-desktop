@@ -133,19 +133,20 @@
 
 (define-abbrev-table 'org-journal-mode-abbrev-table '())
 
-(define-abbrev-table 'org-mode-abbrev-table '(
-                              ("event" "⛥")
-                              ("appointment" "▲")
-                              ("deadline" "❗")
-                              ("accomplishment" "✓")
-                              ("distraction" "<")
-                              ("note" "▪")
-                              ("research" "❓")
-                              ("fantasy" "⛅")
-                              ("idea" "🗲")
-                              ("inspiration" "♥")
-                              ("finance" "＄")
-))
+(define-abbrev-table 'org-mode-abbrev-table
+  '(
+    ("iaccomplishment" "✓" nil 0)
+    ("iappointment" "▲" nil 0)
+    ("ideadline" "❗" nil 0)
+    ("idistraction" "<" nil 0)
+    ("ievent" "⛥" nil 0)
+    ("ifantasy" "⛅" nil 0)
+    ("ifinance" "＄" nil 0)
+    ("iidea" "🗲" nil 0)
+    ("iinspiration" "♥" nil 0)
+    ("inote" "▪" nil 0)
+    ("iresearch" "❓" nil 0)
+   ))
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
