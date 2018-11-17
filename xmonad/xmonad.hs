@@ -45,9 +45,8 @@ myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
 myStartupHook :: X ()
 myStartupHook = do
   spawnOnce "/home/gigi/.config/autostart/sessions/xmonad-dark-paradise"
-  spawnOnce "/usr/lib/notify-osd/notify-osd"
+  spawnOnce "dunst -config ~/.config/dunst/dunstrc-dark-paradise"
   -- spawnOnce "pulseaudio --start"
-  spawnOnce "light-locker"
   spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
   spawnOnce "tint2"
   spawnOnce "nm-applet"
@@ -78,7 +77,7 @@ myConfig = def
   , modMask            = mod4Mask
   , normalBorderColor  = middleColor
   , startupHook        = myStartupHook
-  , terminal           = "kitty"
+  , terminal           = "urxvt"
   , workspaces         = ["navegando", "desarrollo [1]", "desarrollo [2]", "español", "diseño", "mensajes", "notas", "sistema", "otro"]
   }
 
@@ -95,7 +94,7 @@ removedKeys XConfig {modMask = modm} =
 addedKeys :: XConfig l -> [((KeyMask, KeySym), X ())]
 addedKeys conf @ XConfig {modMask = modm} =
   [ -- SERVICES
-    ((modm, xK_space) , spawn "rofi -show")
+    ((modm, xK_space) , spawn "rofi -show run -config ~/.config/rofi/config-dark-paradise")
   , ((modm, xK_Return), spawn $ XMonad.terminal conf)
   , ((0, xK_Home), spawn "maim ~/Media/capturas_de_pantalla/$(date +%s).png")
   , ((shiftMask, xK_Home), spawn "maim -s  xclip -selection clipboard -t image/png")

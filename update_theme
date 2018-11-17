@@ -12,12 +12,15 @@ cp $HOME/.config/autostart/sessions/xmonad-dark-paradise $DEST/
 cp $HOME/.bashrc $DEST/
 
 # X
-cp $HOME/.Xresources $DEST/
-cp -r $HOME/.themes/dark-paradise $DEST/gtk/
+cp $HOME/.Xdefaults $DEST/
+cp -r $HOME/.local/share/themes/*dark-paradise $DEST/gtk/
 cp -r $HOME/.backgrounds/dark-paradise $DEST/backgrounds/
 
 # Compton
 cp $HOME/.config/compton.conf $DEST/
+
+# Dunst
+cp $HOME/.config/dunst/dunstrc-dark-paradise $DEST/dunst/
 
 # Spacemacs
 cp -r $HOME/.emacs.d/{init.el,spacemacs-dark-paradise-theme.el,private/gigi} $DEST/emacs/

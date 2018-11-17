@@ -49,7 +49,7 @@
           org-projectile-file "TODO.org")
      pandoc
      pdf-tools
-     (pythons :variables
+     (python :variables
               python-test-runner 'pytest
               python-enable-yapf-format-on-save t
               python-sort-imports-on-save t)
@@ -84,7 +84,8 @@
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
-   dotspacemacs-themes '(spacemacs-dark-paradise)
+   dotspacemacs-themes '(spacemacs-dark-paradise
+                         spacemacs-polaroid)
    dotspacemacs-colorize-cursor-according-to-state nil
    dotspacemacs-default-font '("Fira Code"
                                :size 15
