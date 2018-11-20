@@ -160,7 +160,7 @@
 (defun gigi/init-gigi-org ()
   (use-package gigi-org
     :init
-    (add-hook 'org-mode-hook #'abbrev-mode)
+    (add-hook 'org-mode-hook 'abbrev-mode)
     :after org
     :config
     (gigi-org-setup-general)

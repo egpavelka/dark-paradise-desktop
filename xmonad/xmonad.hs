@@ -33,6 +33,7 @@ import qualified XMonad.StackSet as W
 backgroundColor   = "#091f2c"
 middleColor       = "#cac46e"
 foregroundColor   = "#e6958b"
+altMask           = mod1Mask
 
 myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
   emptyBSP ||| Circle
@@ -44,17 +45,11 @@ myLayout = avoidStruts $ minimize $ smartSpacingWithEdge 15 $
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnce "/home/gigi/.config/autostart/sessions/xmonad-dark-paradise"
+  spawnOnce "~/.config/autostart/sessions/xmonad-dark-paradise"
   spawnOnce "dunst -config ~/.config/dunst/dunstrc-dark-paradise"
-  -- spawnOnce "pulseaudio --start"
-  spawnOnce "feh --bg-fill /home/gigi/.backgrounds/dark-paradise/flamingowall.jpg"
+  spawnOnce "feh --bg-fill ~/.backgrounds/dark-paradise/flamingowall.jpg"
   spawnOnce "tint2"
-  spawnOnce "nm-applet"
-  spawnOnce "pa-applet"
-  spawnOnce "cbatticon"
-  spawnOnce "redshift-gtk"
-  spawnOnce "compton"
-  spawnOnce "setxkbmap -option compose:menu"
+  spawnOnce "~/.scripts/systray-launchers"
 
 -- MAIN CONFIG
 
@@ -96,8 +91,10 @@ addedKeys conf @ XConfig {modMask = modm} =
   [ -- SERVICES
     ((modm, xK_space) , spawn "rofi -show run -config ~/.config/rofi/config-dark-paradise")
   , ((modm, xK_Return), spawn $ XMonad.terminal conf)
-  , ((0, xK_Home), spawn "maim ~/Media/capturas_de_pantalla/$(date +%s).png")
-  , ((shiftMask, xK_Home), spawn "maim -s  xclip -selection clipboard -t image/png")
+  , ((0, xK_Home), spawn "Thunar")
+  , ((modm, xK_Print), spawn "~/.scripts/sshot_full")
+  , ((modm .|. shiftMask, xK_Print), spawn "~/.scripts/sshot_window")
+  , ((altMask, xK_Print), spawn "~/.scripts/sshot_select")
   , ((modm, xK_q), recompile True >> restart "xmonad" True)
   , ((0, xF86XK_AudioRaiseVolume), spawn "/usr/bin/pulseaudio-ctl up")
   , ((0, xF86XK_AudioLowerVolume), spawn "/usr/bin/pulseaudio-ctl down")

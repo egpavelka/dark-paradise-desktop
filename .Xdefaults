@@ -56,3 +56,7 @@ URxvt.thickness:			0
 
 ! padding
 URxvt.internalBorder:	25
+
+! transparency
+URxvt.depth: 32
+URxvt.background: [80]#091f2c

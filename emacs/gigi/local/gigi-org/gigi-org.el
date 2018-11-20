@@ -96,7 +96,7 @@
 (defun gigi-org-setup-keywords ()
 
   (defface keyword-icons-face
-    '((t (:inherit none :background nil :foreground "#d07c67" :height 1.5)))
+    '((t (:inherit none :background nil :foreground "#d07c67" :family "ETBembo" :height 1.5)))
     "face for bullet journal style icons"
     )
 
@@ -122,9 +122,6 @@
   (with-eval-after-load 'org
     (setq org-startup-indented t
           org-clock-idle-time 5
-          ;; org-bullets-bullet-list '("╪" "⋇" "⊸" "∘")
-          ;; org-bullets-bullet-list '("𐄺" "⋇" "⁙" "∷" "∴" "⠒" "∙")
-          ;; org-bullets-bullet-list '("╪" "⍎" "≗" "═" "⍛" "—" "∘")
           org-bullets-bullet-list '("⋅")
           org-ellipsis "..."
           org-pretty-entities t
